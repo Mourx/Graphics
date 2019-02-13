@@ -7,8 +7,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\FloorTile.cpp" />
+    <ClCompile Include="Code\Light.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
+    <ClCompile Include="Code\FloorSegment.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
@@ -17,7 +20,9 @@
     <ClCompile Include="Code\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\FloorTile.h" />
     <ClInclude Include="Code\MyScene.h" />
+    <ClInclude Include="Code\FloorSegment.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />
@@ -28,6 +33,7 @@
     <ClInclude Include="Framework\Utility\VectorMath.h" />
     <ClInclude Include="Code\Triangle.h" />
     <ClInclude Include="Code\Vertex.h" />
+    <ClInclude Include="Code\Light.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Tex1.bmp" />
@@ -35,7 +41,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
     <RootNamespace>G53GRAFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
