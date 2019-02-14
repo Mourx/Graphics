@@ -11,7 +11,7 @@ void Camera::Reset(){
 	// set the camera position to start at (0,0,0)
 	eyePosition[0] = 0.0f;
 	eyePosition[1] = 0.0f;
-	eyePosition[2] = 0.5f * static_cast<float>(Scene::GetWindowHeight()) / static_cast<float>(tan(M_PI / 6.0));//0.0f;
+	eyePosition[2] = 0.1f * static_cast<float>(Scene::GetWindowHeight()) / static_cast<float>(tan(M_PI / 6.0));//0.0f;
 
 	// set the view direction vector of the camera to be (0,0,-1)
 	vd[0] = 0.0f;
@@ -32,6 +32,11 @@ void Camera::Reset(){
 	up[0] = 0.0f;
 	up[1] = 1.0f;
 	up[2] = 0.0f;
+
+	// set the down vector of the camera to be up the y axis
+	down[0] = 0.0f;
+	down[1] = -1.0f;
+	down[2] = 0.0f;
 }
 
 void Camera::SetViewport()
@@ -53,18 +58,30 @@ void Camera::Update(const double& deltaTime)
 {
 	float speed = 1.0f;
 
-	if (aKey)
+	if (aKey) {
 		sub(eyePosition, right, speed);
-
-	if (dKey)
+		if (eyePosition[0] <= -100) {
+			eyePosition[0] = -100;
+		}
+	}
+	if (dKey) {
 		add(eyePosition, right, speed);
-
-	if (wKey)
-		add(eyePosition, forward, speed);
-
-	if (sKey)
-		sub(eyePosition, forward, speed);
-
+		if (eyePosition[0] >= 100) {
+			eyePosition[0] = 100;
+		}
+	}
+	if (wKey) {
+		add(eyePosition, up, speed);
+		if (eyePosition[1] >= 100) {
+			eyePosition[1] = 100;
+		}
+	}
+	if (sKey){
+		sub(eyePosition, up, speed);
+		if (eyePosition[1] <= -100) {
+			eyePosition[1] = -100;
+		}
+	}
 	SetupCamera();
 }
 

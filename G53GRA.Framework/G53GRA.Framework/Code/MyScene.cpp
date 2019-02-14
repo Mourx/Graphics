@@ -38,13 +38,25 @@ void MyScene::Initialise()
 	floorTile->AddToScene();
 	points.clear();
 
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 20; j++) {
+			points.push_back(new Vertex(-100.f+10*j, -100.f+10*i, 0.f));
+			points.push_back(new Vertex(-90.f+10*j, -100.f+10*i, 0.f));
+			points.push_back(new Vertex(-90.f+10*j, -90.f+10*i, 0.f));
+			points.push_back(new Vertex(-100.f+10*j, -90.f+10*i, 0.f));
+			Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Grass.bmp");
+			AddObj(tile);
+			points.clear();
 
-	points.push_back(new Vertex(0.f, 0.f, 0.f));
-	points.push_back(new Vertex(10.f, 0.f, 0.f));
-	points.push_back(new Vertex(10.f, 10.f, 0.f));
-	points.push_back(new Vertex(0.f, 10.f, 0.f));
-	Tile* tile = new Tile(points, new Vertex(255, 255, 0), "Textures/Grass.bmp");
+		}
+	}
+	points.push_back(new Vertex(0.f, 0.f, 10.f));
+	points.push_back(new Vertex(10.f, 0.f, 10.f));
+	points.push_back(new Vertex(10.f,10.f, 10.f));
+	points.push_back(new Vertex(0.f, 10.f, 10.f));
+	Tile* tile = new Tile(points, new Vertex(0, 0, 0), "Textures/Barn.bmp");
 	AddObj(tile);
+	points.clear();
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	

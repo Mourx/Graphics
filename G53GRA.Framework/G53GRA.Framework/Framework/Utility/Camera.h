@@ -100,6 +100,8 @@ private:
 	float right[3];
 	/** Vector representing upward orthogonal axes of your {@link Camera} space. */
 	float up[3];
+	/** Vector representing downward orthogonal axes of your {@link Camera} space. */
+	float down[3];
 
 	/**
 	 * Member variable used to track when a key is pressed between frames

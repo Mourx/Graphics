@@ -103,9 +103,6 @@
     <Image Include="Textures\Tex1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Textures\Barn.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Textures\Grass.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -131,6 +128,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Textures\Steel.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Barn.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

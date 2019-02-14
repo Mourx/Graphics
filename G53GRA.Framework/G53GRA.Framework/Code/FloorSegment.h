@@ -1,5 +1,5 @@
 #pragma once
-#include "c:\Users\Joel\Documents\Graphics\Graphics\G53GRA.Framework\G53GRA.Framework\Code\Triangle.h"
+#include "Triangle.h"
 class FloorSegment :
 	public Triangle
 {
