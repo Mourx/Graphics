@@ -50,11 +50,11 @@ void MyScene::Initialise()
 
 		}
 	}
-	points.push_back(new Vertex(0.f, 0.f, 10.f));
-	points.push_back(new Vertex(10.f, 0.f, 10.f));
-	points.push_back(new Vertex(10.f,10.f, 10.f));
-	points.push_back(new Vertex(0.f, 10.f, 10.f));
-	Tile* tile = new Tile(points, new Vertex(0, 0, 0), "Textures/Barn.bmp");
+	points.push_back(new Vertex(0.f, 0.f, 0.f));
+	points.push_back(new Vertex(10.f, 0.f, 0.f));
+	points.push_back(new Vertex(10.f,10.f, 0.f));
+	points.push_back(new Vertex(0.f, 10.f, 0.f));
+	Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/science_lab.bmp");
 	AddObj(tile);
 	points.clear();
 
