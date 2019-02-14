@@ -2,6 +2,7 @@
 #include "Triangle.h"
 #include "FloorTile.h"
 #include "Light.h"
+#include "Tile.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -16,7 +17,7 @@ void MyScene::AddObj(DisplayableObject* obj) {
 void MyScene::Initialise()
 {
 	Light* light = new Light();
-	AddObjectToScene(light);
+	//AddObjectToScene(light);
 	std::vector<Vertex*> points;
 	points.push_back(new Vertex(0.f, -10.f, 0.f));
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
@@ -24,7 +25,7 @@ void MyScene::Initialise()
 
 	//AddObjectToScene(new Triangle(points,new Vertex(200,0,0), "Textures/Tex1.bmp",0));
 	std::vector<FloorSegment*> segments;
-	segments.push_back(new FloorSegment(points, new Vertex(200, 0, 0), "Textures/Tex1.bmp", 0));
+	segments.push_back(new FloorSegment(points, new Vertex(100, 100, 0), "Textures/Tex1.bmp", 0));
 	points.clear();
 
 	points.push_back(new Vertex(20.f, -10.f, -20.f));
@@ -32,12 +33,18 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
 
 	//AddObjectToScene(new Triangle(points, new Vertex(0,200,0), "Textures/Tex1.bmp",1));
-	segments.push_back(new FloorSegment(points, new Vertex(200, 0, 0), "Textures/Tex1.bmp", 1));
+	segments.push_back(new FloorSegment(points, new Vertex(100, 100, 0), "Textures/Tex1.bmp", 1));
 	FloorTile* floorTile = new FloorTile(segments, this);
 	floorTile->AddToScene();
 	points.clear();
 
-	
+
+	points.push_back(new Vertex(0.f, 0.f, 0.f));
+	points.push_back(new Vertex(10.f, 0.f, 0.f));
+	points.push_back(new Vertex(10.f, 10.f, 0.f));
+	points.push_back(new Vertex(0.f, 10.f, 0.f));
+	Tile* tile = new Tile(points, new Vertex(255, 255, 0), "Textures/Grass.bmp");
+	AddObj(tile);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	

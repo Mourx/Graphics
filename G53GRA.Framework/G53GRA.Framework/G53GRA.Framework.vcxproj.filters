@@ -48,6 +48,9 @@
     <ClCompile Include="Code\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -92,9 +95,42 @@
     <ClInclude Include="Code\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Tex1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Barn.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Grass.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\monster_nose_squid.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\monster_nose_squid.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\science_lab.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\science_lab.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\shield.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\shield.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\spritesheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Steel.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

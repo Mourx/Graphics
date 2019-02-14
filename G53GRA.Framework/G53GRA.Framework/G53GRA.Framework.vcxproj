@@ -18,11 +18,13 @@
     <ClCompile Include="Framework\Utility\Texture.cpp" />
     <ClCompile Include="Code\Triangle.cpp" />
     <ClCompile Include="Code\Vertex.cpp" />
+    <ClCompile Include="Code\Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\FloorTile.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\FloorSegment.h" />
+    <ClInclude Include="Code\Tile.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />
@@ -36,6 +38,16 @@
     <ClInclude Include="Code\Light.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Textures\Barn.bmp" />
+    <Image Include="Textures\Grass.bmp" />
+    <Image Include="Textures\monster_nose_squid.bmp" />
+    <Image Include="Textures\monster_nose_squid.png" />
+    <Image Include="Textures\science_lab.bmp" />
+    <Image Include="Textures\science_lab.png" />
+    <Image Include="Textures\shield.bmp" />
+    <Image Include="Textures\shield.png" />
+    <Image Include="Textures\spritesheet.png" />
+    <Image Include="Textures\Steel.bmp" />
     <Image Include="Textures\Tex1.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
