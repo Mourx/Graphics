@@ -12,6 +12,7 @@
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\FloorSegment.cpp" />
+    <ClCompile Include="Code\Soldier.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="Code\Triangle.h" />
     <ClInclude Include="Code\Vertex.h" />
     <ClInclude Include="Code\Light.h" />
+    <ClInclude Include="Code\Soldier.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Barn.bmp" />
