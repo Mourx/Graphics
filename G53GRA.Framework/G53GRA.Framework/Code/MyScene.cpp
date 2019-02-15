@@ -4,6 +4,7 @@
 #include "Light.h"
 #include "Tile.h"
 #include "Soldier.h"
+#include "Path.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -15,6 +16,20 @@ void MyScene::AddObj(DisplayableObject* obj) {
 	AddObjectToScene(obj);
 }
 
+std::vector<Node*> InitialiseNodes(std::vector<Node*> crnrs) {
+	crnrs.push_back(new Node(-10, 100));
+	crnrs.push_back(new Node(-10, 60));
+	crnrs.push_back(new Node(-70, 60));
+	crnrs.push_back(new Node(-70, -60));
+	crnrs.push_back(new Node(0, -60));
+	crnrs.push_back(new Node(0, 0));
+	crnrs.push_back(new Node(40, 0));
+	crnrs.push_back(new Node(40, 70));
+	crnrs.push_back(new Node(80, 70));
+	crnrs.push_back(new Node(80, 100));
+	return crnrs;
+}
+
 void MyScene::Initialise()
 {
 	Light* light = new Light();
@@ -24,6 +39,9 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
 	points.push_back(new Vertex(0.f, -10.f, -20.f));
 
+	std::vector<Node*> corners;
+	corners = InitialiseNodes(corners);
+	
 	//AddObjectToScene(new Triangle(points,new Vertex(200,0,0), "Textures/Tex1.bmp",0));
 	std::vector<FloorSegment*> segments;
 	segments.push_back(new FloorSegment(points, new Vertex(100, 100, 0), "Textures/Tex1.bmp", 0));
@@ -66,6 +84,7 @@ void MyScene::Initialise()
 	Soldier* soldier = new Soldier(points, new Vertex(255, 255, 255), "Textures/monster_nose_squid.bmp",1);
 	AddObj(soldier);
 	points.clear();
+	Path* path = new Path(corners, this);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	

@@ -3,6 +3,7 @@
 #include "Animation.h"
 #include "Input.h"
 #include "Vertex.h"
+#include "Node.h"
 
 class Soldier :
 	public DisplayableObject
@@ -15,6 +16,8 @@ public:
 	void Update(const double& deltaTime);
 	void HandleKey(unsigned char key, int state, int x, int y);
 
+protected:
+	std::vector<Node*> nodes;
 private:
 	float xrot, yrot, zrot;
 	float scale;
