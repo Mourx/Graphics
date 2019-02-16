@@ -7,6 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\EnemyObject.cpp" />
     <ClCompile Include="Code\FloorTile.cpp" />
     <ClCompile Include="Code\Light.cpp" />
     <ClCompile Include="Code\main.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="Code\ObjLoader.h" />
     <ClInclude Include="Code\PlayerObject.h" />
     <ClInclude Include="Code\Tile.h" />
+    <ClInclude Include="Code\EnemyObject.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />

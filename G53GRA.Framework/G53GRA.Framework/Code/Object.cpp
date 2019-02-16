@@ -21,6 +21,7 @@ Object::~Object()
 void Object::Display() {
 	std::vector<Vertex*> points;
 
+	//glScalef(1, 1, 1);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < vertices.size(); i+=3) {
 		glColor3f(255,255,255);
@@ -30,7 +31,7 @@ void Object::Display() {
 		glVertex3f(posX+points[0]->x*4, points[0]->y*4, posZ + points[0]->z*4);
 		glVertex3f(posX + points[1]->x*4, points[1]->y*4, posZ + points[1]->z*4);
 		glVertex3f(posX + points[2]->x*4, points[2]->y*4, posZ + points[2]->z*4);
-		glScalef(12, 12, 12);
+		
 
 		points.clear();
 

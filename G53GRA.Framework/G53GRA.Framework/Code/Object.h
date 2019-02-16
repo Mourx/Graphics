@@ -1,8 +1,10 @@
 #pragma once
 #include "DisplayableObject.h"
+#include "Animation.h"
 #include "Vertex.h"
 class Object :
-	public DisplayableObject
+	public DisplayableObject,
+	public Animation
 {
 public:
 	Object();

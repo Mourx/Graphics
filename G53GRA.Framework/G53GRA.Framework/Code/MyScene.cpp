@@ -8,6 +8,7 @@
 #include "ObjLoader.h"
 #include "Object.h"
 #include "PlayerObject.h"
+#include "EnemyObject.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -42,6 +43,8 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
 	points.push_back(new Vertex(0.f, -10.f, -20.f));
 
+	std::vector<Node*> corners;
+	corners = InitialiseNodes(corners);
 
 	ObjLoader* ldr = new ObjLoader();
 	ldr->LoadObj("Models/Tower.obj");
@@ -51,13 +54,18 @@ void MyScene::Initialise()
 	//std::vector<Vertex*> normals = ldr->getNorms();
 	AddObjectToScene(obj);
 
+	//Player
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Man.obj");
-	PlayerObject* player = new PlayerObject(ldr->getVerts(),ldr->getNorms());
+	PlayerObject* player = new PlayerObject(ldr->getVerts(), ldr->getNorms());
 	AddObjectToScene(player);
 
-	std::vector<Node*> corners;
-	corners = InitialiseNodes(corners);
+	//Monster
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Monster.obj");
+	EnemyObject* enemy = new EnemyObject(ldr->getVerts(), ldr->getNorms(),corners);
+	AddObjectToScene(enemy);
+	
 	
 	//AddObjectToScene(new Triangle(points,new Vertex(200,0,0), "Textures/Tex1.bmp",0));
 	std::vector<FloorSegment*> segments;
