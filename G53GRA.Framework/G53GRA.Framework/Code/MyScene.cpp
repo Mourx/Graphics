@@ -5,6 +5,9 @@
 #include "Tile.h"
 #include "Soldier.h"
 #include "Path.h"
+#include "ObjLoader.h"
+#include "Object.h"
+#include "PlayerObject.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -39,6 +42,20 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
 	points.push_back(new Vertex(0.f, -10.f, -20.f));
 
+
+	ObjLoader* ldr = new ObjLoader();
+	ldr->LoadObj("Models/Tower.obj");
+	Object* obj = new Object(ldr->getVerts(),ldr->getNorms());
+	//std::vector<Vertex*> vertices = ldr->getVerts();
+	//std::vector<Vertex*> uvs = ldr->getUVs();
+	//std::vector<Vertex*> normals = ldr->getNorms();
+	AddObjectToScene(obj);
+
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Man.obj");
+	PlayerObject* player = new PlayerObject(ldr->getVerts(),ldr->getNorms());
+	AddObjectToScene(player);
+
 	std::vector<Node*> corners;
 	corners = InitialiseNodes(corners);
 	
@@ -59,10 +76,10 @@ void MyScene::Initialise()
 
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 20; j++) {
-			points.push_back(new Vertex(-100.f+10*j, -100.f+10*i, 0.f));
-			points.push_back(new Vertex(-90.f+10*j, -100.f+10*i, 0.f));
-			points.push_back(new Vertex(-90.f+10*j, -90.f+10*i, 0.f));
-			points.push_back(new Vertex(-100.f+10*j, -90.f+10*i, 0.f));
+			points.push_back(new Vertex(-100.f + 10 * j, 0.f, -90.f + 10 * i));
+			points.push_back(new Vertex(-90.f + 10 * j, 0.f, -90.f + 10 * i));
+			points.push_back(new Vertex(-90.f + 10 * j, 0.f, - 100.f + 10 * i));
+			points.push_back(new Vertex(-100.f + 10 * j, 0.f, -100.f + 10 * i));
 			Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Grass.bmp");
 			AddObj(tile);
 			points.clear();

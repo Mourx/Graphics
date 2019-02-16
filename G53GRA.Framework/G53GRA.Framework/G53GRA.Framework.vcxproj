@@ -12,6 +12,7 @@
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\FloorSegment.cpp" />
+    <ClCompile Include="Code\Object.cpp" />
     <ClCompile Include="Code\Path.cpp" />
     <ClCompile Include="Code\Soldier.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
@@ -22,11 +23,15 @@
     <ClCompile Include="Code\Vertex.cpp" />
     <ClCompile Include="Code\Tile.cpp" />
     <ClCompile Include="Code\Node.cpp" />
+    <ClCompile Include="Code\ObjLoader.cpp" />
+    <ClCompile Include="Code\PlayerObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\FloorTile.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\FloorSegment.h" />
+    <ClInclude Include="Code\ObjLoader.h" />
+    <ClInclude Include="Code\PlayerObject.h" />
     <ClInclude Include="Code\Tile.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
@@ -42,6 +47,7 @@
     <ClInclude Include="Code\Soldier.h" />
     <ClInclude Include="Code\Node.h" />
     <ClInclude Include="Code\Path.h" />
+    <ClInclude Include="Code\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Barn.bmp" />
@@ -59,7 +65,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
     <RootNamespace>G53GRAFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,6 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.\Framework;.\Code;.\Code\Demos;.\Framework\Utility;.\Framework\Interface;.\Framework\Engine;../freeglut/include</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

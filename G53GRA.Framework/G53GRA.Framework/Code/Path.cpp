@@ -30,10 +30,10 @@ void Path::FixPath() {
 		y = corners[i]->posY;
 		while (x != corners[i + 1]->posX || y != corners[i + 1]->posY) {
 			
-			points.push_back(new Vertex(x, y - 10, 0.f));
-			points.push_back(new Vertex(x + 10, y - 10, 0.f));
-			points.push_back(new Vertex(x + 10, y, 0.f));
-			points.push_back(new Vertex(x, y, 0.f));
+			points.push_back(new Vertex(x, 0.f, y));
+			points.push_back(new Vertex(x + 10, 0.f, y));
+			points.push_back(new Vertex(x + 10, 0.f, y - 10));
+			points.push_back(new Vertex(x, 0.f, y - 10));
 			tiles.push_back(new Tile(points, new Vertex(255, 255, 255), "Textures/Steel.bmp"));
 			int diffx = (corners[i + 1]->posX - corners[i]->posX);
 			int diffy = (corners[i + 1]->posY - corners[i]->posY);
@@ -47,10 +47,11 @@ void Path::FixPath() {
 			points.clear();
 		}
 	}
-	points.push_back(new Vertex(corners[corners.size()-1]->posX, corners[corners.size() - 1]->posY - 10, 0.f));
-	points.push_back(new Vertex(corners[corners.size() - 1]->posX + 10, corners[corners.size() - 1]->posY - 10, 0.f));
-	points.push_back(new Vertex(corners[corners.size() - 1]->posX + 10, corners[corners.size() - 1]->posY, 0.f));
-	points.push_back(new Vertex(corners[corners.size() - 1]->posX, corners[corners.size() - 1]->posY, 0.f));
+	points.push_back(new Vertex(corners[corners.size() - 1]->posX, 0.f, corners[corners.size() - 1]->posY));
+	points.push_back(new Vertex(corners[corners.size() - 1]->posX + 10, 0.f, corners[corners.size() - 1]->posY));
+	points.push_back(new Vertex(corners[corners.size() - 1]->posX + 10, 0.f, corners[corners.size() - 1]->posY - 10));
+	points.push_back(new Vertex(corners[corners.size()-1]->posX,  0.f, corners[corners.size() - 1]->posY - 10));
+	
 	tiles.push_back(new Tile(points, new Vertex(255, 255, 255), "Textures/Steel.bmp"));
 	points.clear();
 }
