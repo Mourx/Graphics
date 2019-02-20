@@ -36,8 +36,11 @@ std::vector<Node*> InitialiseNodes(std::vector<Node*> crnrs) {
 
 void MyScene::Initialise()
 {
-	Light* light = new Light();
-	//AddObjectToScene(light);
+	Light* light = new Light(new Vertex(50,60,10),GL_LIGHT0);
+	AddObjectToScene(light);
+
+	light = new Light(new Vertex(-50, 60, 10), GL_LIGHT1);
+	AddObjectToScene(light);
 	std::vector<Vertex*> points;
 	points.push_back(new Vertex(0.f, -10.f, 0.f));
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
@@ -47,8 +50,8 @@ void MyScene::Initialise()
 	corners = InitialiseNodes(corners);
 
 	ObjLoader* ldr = new ObjLoader();
-	ldr->LoadObj("Models/Tower.obj");
-	Object* obj = new Object(ldr->getVerts(),ldr->getNorms());
+	ldr->LoadObj("Models/cube.obj",true);
+	Object* obj = new Object(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat());
 	//std::vector<Vertex*> vertices = ldr->getVerts();
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
@@ -56,14 +59,14 @@ void MyScene::Initialise()
 
 	//Player
 	ldr = new ObjLoader();
-	ldr->LoadObj("Models/Man.obj");
-	PlayerObject* player = new PlayerObject(ldr->getVerts(), ldr->getNorms());
+	ldr->LoadObj("Models/Man.obj",false);
+	PlayerObject* player = new PlayerObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
 	AddObjectToScene(player);
 
 	//Monster
 	ldr = new ObjLoader();
-	ldr->LoadObj("Models/Monster.obj");
-	EnemyObject* enemy = new EnemyObject(ldr->getVerts(), ldr->getNorms(),corners);
+	ldr->LoadObj("Models/Monster.obj",false);
+	EnemyObject* enemy = new EnemyObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(),corners, ldr->getMat());
 	AddObjectToScene(enemy);
 	
 	
@@ -94,18 +97,18 @@ void MyScene::Initialise()
 
 		}
 	}
-	points.push_back(new Vertex(0.f, 0.f, 0.f));
-	points.push_back(new Vertex(10.f, 0.f, 0.f));
-	points.push_back(new Vertex(10.f,10.f, 0.f));
-	points.push_back(new Vertex(0.f, 10.f, 0.f));
+	points.push_back(new Vertex(30.f, 0.f, 0.f));
+	points.push_back(new Vertex(40.f, 0.f, 0.f));
+	points.push_back(new Vertex(40.f,10.f, 0.f));
+	points.push_back(new Vertex(30.f, 10.f, 0.f));
 	Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/science_lab.bmp");
 	AddObj(tile);
 	points.clear();
 
-	points.push_back(new Vertex(0.f, -10.f, 0.f));
-	points.push_back(new Vertex(10.f, -10.f, 0.f));
-	points.push_back(new Vertex(10.f, 0.f, 0.f));
-	points.push_back(new Vertex(0.f, 0.f, 0.f));
+	points.push_back(new Vertex(30.f, -10.f, 0.f));
+	points.push_back(new Vertex(40.f, -10.f, 0.f));
+	points.push_back(new Vertex(40.f, 0.f, 0.f));
+	points.push_back(new Vertex(30.f, 0.f, 0.f));
 	Soldier* soldier = new Soldier(points, new Vertex(255, 255, 255), "Textures/monster_nose_squid.bmp",1);
 	AddObj(soldier);
 	points.clear();

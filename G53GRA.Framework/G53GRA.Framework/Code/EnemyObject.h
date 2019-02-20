@@ -7,7 +7,7 @@ class EnemyObject :
 	public Object
 {
 public:
-	EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Node*> nodes);
+	EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::vector<Node*> nodes, std::string mat);
 	~EnemyObject();
 
 	void Display();

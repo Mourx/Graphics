@@ -2,7 +2,7 @@
 
 
 
-PlayerObject::PlayerObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms) : Object(verts,norms)
+PlayerObject::PlayerObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::string mat) : Object(verts,norms,uvs,mat)
 {
 	posX = -5;
 	posY = 0;
@@ -15,5 +15,6 @@ PlayerObject::~PlayerObject()
 }
 
 void PlayerObject::Display() {
+	bUV = false;
 	Object::Display();
 }

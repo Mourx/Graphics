@@ -12,7 +12,7 @@ ObjLoader::~ObjLoader()
 }
 
 
-void ObjLoader::LoadObj(const char* filename) {
+void ObjLoader::LoadObj(const char* filename,bool bUV) {
 	FILE * file = fopen(filename, "r");
 	if (file == NULL) {
 		printf("ERROR: Can't find file\n");
@@ -54,18 +54,24 @@ void ObjLoader::LoadObj(const char* filename) {
 		else if (strcmp(lineHead, "f") == 0){
 			std::string v1, v2, v3;
 			unsigned int vI[3], uvI[3], nI[3];
-			// a/b/c d/e/f g/h/i format of vertex locations, texture locations, normal locations
-			/*int lineMatch = fscanf(file, "%d/%d/%d  %d/%d/%d  %d/%d/%d\n", &vI[0], &uvI[0], &nI[0], // 1
-				&vI[1], &uvI[1], &nI[1], // 2
-				&vI[2], &uvI[2], &nI[2]); // 3
-				*/
-			//above is for with uv, below is no mat
-			int lineMatch = fscanf(file, "%d//%d  %d//%d %d//%d\n", &vI[0], &nI[0], // 1
-				&vI[1], &nI[1], // 2
-				&vI[2], &nI[2]); // 3
-			if (lineMatch != 12) {
-				//printf("OOF we done gOOFed\n");
+			if (bUV) {
+				// a/b/c d/e/f g/h/i format of vertex locations, texture locations, normal locations
+				int lineMatch = fscanf(file, "%d/%d/%d  %d/%d/%d  %d/%d/%d\n", &vI[0], &uvI[0], &nI[0], // 1
+					&vI[1], &uvI[1], &nI[1], // 2
+					&vI[2], &uvI[2], &nI[2]); // 3
+				if (lineMatch != 12) {
+					//printf("OOF we done gOOFed\n");
+				}
 			}
+			//above is for with uv, below is no mat
+			else {
+				int lineMatch = fscanf(file, "%d//%d  %d//%d %d//%d\n", &vI[0], &nI[0], // 1
+					&vI[1], &nI[1], // 2
+					&vI[2], &nI[2]); // 3
+			}
+			
+			
+
 
 			// load everything into our vectors
 			vertexIndices.push_back(vI[0]);
@@ -78,6 +84,11 @@ void ObjLoader::LoadObj(const char* filename) {
 			normalIndices.push_back(nI[1]);
 			normalIndices.push_back(nI[2]);
 		}
+		else if (strcmp(lineHead, "usemtl") == 0 && bUV == true)
+		{
+			int lineMatch = fscanf(file, "%s", &material);
+			
+		}
 
 	}
 	//Load Vertices into final form
@@ -87,13 +98,16 @@ void ObjLoader::LoadObj(const char* filename) {
 		out_vertices.push_back(vertex);
 	}
 	// same for UV (textures)
-	/* leave out uv for now
-	for (int i = 0; i < uvIndices.size(); i++) {
-	unsigned int vI = uvIndices[i];
-	Vertex* vertex = temp_uvs[vI - 1];
-	out_uvs.push_back(vertex);
+	/* leave out uv for now */
+	
+	if (bUV) {
+		for (int i = 0; i < uvIndices.size(); i++) {
+			unsigned int vI = uvIndices[i];
+			Vertex* vertex = temp_uvs[vI - 1];
+			out_uvs.push_back(vertex);
+		}
 	}
-	*/
+	
 
 	//and again for normals (useless lol)
 	for (int i = 0; i < normalIndices.size(); i++) {
@@ -112,4 +126,7 @@ std::vector<Vertex*> ObjLoader::getUVs() {
 }
 std::vector<Vertex*> ObjLoader::getNorms() {
 	return out_normals;
+}
+std::string ObjLoader::getMat() {
+	return material;
 }

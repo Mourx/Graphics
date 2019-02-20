@@ -22,11 +22,12 @@ Tile::~Tile()
 void Tile::Display()
 {
 	int texID = Scene::GetTexture(fileName);
-
+	
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
 
 	glBegin(GL_QUADS);
+	
 	glColor3f(colour->x, colour->y, colour->z);
 
 	glTexCoord2f(0, 0);

@@ -1,1 +1,6 @@
-﻿  G53GRA.Framework.vcxproj -> C:\Users\Joel\Documents\Graphics\Graphics\G53GRA.Framework\Debug\G53GRA.Framework.exe
+﻿  ObjLoader.cpp
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(89): warning C4477: 'fscanf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string *'
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(95): warning C4018: '<': signed/unsigned mismatch
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(113): warning C4018: '<': signed/unsigned mismatch
+  G53GRA.Framework.vcxproj -> C:\Users\Joel\Documents\Nottingham\G53GRA\Solo\Graphics\G53GRA.Framework\Debug\G53GRA.Framework.exe

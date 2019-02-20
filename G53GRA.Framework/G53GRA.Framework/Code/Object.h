@@ -8,7 +8,7 @@ class Object :
 {
 public:
 	Object();
-	Object(std::vector<Vertex*> verts, std::vector<Vertex*> norms);
+	Object(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::string mat);
 	~Object();
 	
 	void Display();
@@ -20,5 +20,7 @@ public:
 	std::vector<Vertex*> normals;
 
 	double posX, posY, posZ;
+	bool bUV = true;
+	std::string material;
 };
 

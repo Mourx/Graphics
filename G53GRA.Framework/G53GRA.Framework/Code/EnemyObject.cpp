@@ -2,7 +2,7 @@
 
 
 
-EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Node*> nodes) : Object(verts, norms)
+EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::vector<Node*> nodes,std::string mat) : Object(verts, norms, uvs,mat)
 {
 	
 	nodeList = nodes;
@@ -17,6 +17,7 @@ EnemyObject::~EnemyObject()
 }
 
 void EnemyObject::Display() {
+	bUV = false;
 	Object::Display();
 }
 
