@@ -22,7 +22,10 @@ Object::~Object()
 
 void Object::Display() {
 	std::vector<Vertex*> points;
+	int texID = Scene::GetTexture("Textures/cube.bmp");
+
 	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texID);
 	//glScalef(1, 1, 1);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < vertices.size(); i+=3) {
@@ -44,7 +47,7 @@ void Object::Display() {
 	}
 
 	glEnd();
-	//glBindTexture(GL_TEXTURE_2D, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
 
 

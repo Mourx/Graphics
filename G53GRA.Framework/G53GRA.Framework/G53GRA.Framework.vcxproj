@@ -16,6 +16,7 @@
     <ClCompile Include="Code\Object.cpp" />
     <ClCompile Include="Code\Path.cpp" />
     <ClCompile Include="Code\Soldier.cpp" />
+    <ClCompile Include="Code\TowerObject.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="Code\Node.cpp" />
     <ClCompile Include="Code\ObjLoader.cpp" />
     <ClCompile Include="Code\PlayerObject.cpp" />
+    <ClCompile Include="Code\ProjectileObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\FloorTile.h" />
@@ -33,6 +35,7 @@
     <ClInclude Include="Code\FloorSegment.h" />
     <ClInclude Include="Code\ObjLoader.h" />
     <ClInclude Include="Code\PlayerObject.h" />
+    <ClInclude Include="Code\ProjectileObject.h" />
     <ClInclude Include="Code\Tile.h" />
     <ClInclude Include="Code\EnemyObject.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
@@ -50,6 +53,7 @@
     <ClInclude Include="Code\Node.h" />
     <ClInclude Include="Code\Path.h" />
     <ClInclude Include="Code\Object.h" />
+    <ClInclude Include="Code\TowerObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Barn.bmp" />

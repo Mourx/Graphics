@@ -8,7 +8,7 @@
 #include "ObjLoader.h"
 #include "Object.h"
 #include "PlayerObject.h"
-#include "EnemyObject.h"
+#include "TowerObject.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -51,7 +51,7 @@ void MyScene::Initialise()
 
 	ObjLoader* ldr = new ObjLoader();
 	ldr->LoadObj("Models/cube.obj",true);
-	Object* obj = new Object(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat());
+	TowerObject* obj = new TowerObject(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat(),this);
 	//std::vector<Vertex*> vertices = ldr->getVerts();
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
@@ -68,6 +68,7 @@ void MyScene::Initialise()
 	ldr->LoadObj("Models/Monster.obj",false);
 	EnemyObject* enemy = new EnemyObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(),corners, ldr->getMat());
 	AddObjectToScene(enemy);
+	enemies.push_back(enemy);
 	
 	
 	//AddObjectToScene(new Triangle(points,new Vertex(200,0,0), "Textures/Tex1.bmp",0));
@@ -123,4 +124,9 @@ void MyScene::Projection()
 {
 	GLdouble aspect = static_cast<GLdouble>(windowWidth) / static_cast<GLdouble>(windowHeight);
 	gluPerspective(60.0, aspect, 1.0, 1000.0);
+}
+
+
+std::vector<EnemyObject*> MyScene::getEnemies() {
+	return enemies;
 }

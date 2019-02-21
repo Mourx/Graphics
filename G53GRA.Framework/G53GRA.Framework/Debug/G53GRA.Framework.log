@@ -1,6 +1,11 @@
-﻿  ObjLoader.cpp
-c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(89): warning C4477: 'fscanf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string *'
-c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(95): warning C4018: '<': signed/unsigned mismatch
-c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(104): warning C4018: '<': signed/unsigned mismatch
-c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\objloader.cpp(113): warning C4018: '<': signed/unsigned mismatch
+﻿  ProjectileObject.cpp
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\framework\utility\texture.h(4): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp: note: see previous definition of '_CRT_SECURE_NO_WARNINGS'
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  TowerObject.cpp
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\framework\utility\texture.h(4): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp: note: see previous definition of '_CRT_SECURE_NO_WARNINGS'
+c:\users\joel\documents\nottingham\g53gra\solo\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   G53GRA.Framework.vcxproj -> C:\Users\Joel\Documents\Nottingham\G53GRA\Solo\Graphics\G53GRA.Framework\Debug\G53GRA.Framework.exe
