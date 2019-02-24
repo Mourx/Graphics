@@ -17,7 +17,9 @@ EnemyObject::~EnemyObject()
 }
 
 void EnemyObject::Display() {
-	bUV = false;
+	bUV = true;
+	texID = Scene::GetTexture("Textures/Steel.bmp");
+
 	Object::Display();
 }
 

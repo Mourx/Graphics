@@ -22,5 +22,7 @@ public:
 	double posX, posY, posZ;
 	bool bUV = true;
 	std::string material;
+	int texID = Scene::GetTexture("Textures/cube.bmp");
+
 };
 

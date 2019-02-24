@@ -22,7 +22,6 @@ Object::~Object()
 
 void Object::Display() {
 	std::vector<Vertex*> points;
-	int texID = Scene::GetTexture("Textures/cube.bmp");
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);

@@ -11,9 +11,13 @@ public:
 	~MyScene() {};
 	void AddObj(DisplayableObject* obj);
 	std::vector<EnemyObject*> getEnemies();
+	void Update(const double& deltaTime);
+	void Draw();
+	void Clean();
+	Camera* GetCam();
 private:
 	void Initialise();
 	void Projection();
 	std::vector<EnemyObject*> enemies;
-
+	std::vector<DisplayableObject*> objects;
 };

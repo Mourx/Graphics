@@ -34,7 +34,7 @@ void Path::FixPath() {
 			points.push_back(new Vertex(x + 10, 0.f, y));
 			points.push_back(new Vertex(x + 10, 0.f, y - 10));
 			points.push_back(new Vertex(x, 0.f, y - 10));
-			tiles.push_back(new Tile(points, new Vertex(255, 255, 255), "Textures/Steel.bmp"));
+			tiles.push_back(new Tile(points, new Vertex(255, 255, 255), "Textures/Dirt.bmp"));
 			int diffx = (corners[i + 1]->posX - corners[i]->posX);
 			int diffy = (corners[i + 1]->posY - corners[i]->posY);
 			if (diffx != 0) {

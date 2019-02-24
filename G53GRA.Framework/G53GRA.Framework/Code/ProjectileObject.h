@@ -10,10 +10,12 @@ public:
 
 	void ReTarget();
 	void Update(const double& deltaTime);
+	bool isFinished();
 
 private:
 	double speedX, speedY, speedZ;
 	double dirX, dirY, dirZ;
 	Object* target;
+	bool bFinished = false;
 };
 

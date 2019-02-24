@@ -17,7 +17,67 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 }
 
 void MyScene::AddObj(DisplayableObject* obj) {
-	AddObjectToScene(obj);
+	objects.push_back(obj);
+}
+
+void MyScene::Update(const double& deltaTime)
+{
+	Animation* animated_obj;
+	// Update camera/view
+	this->GetCamera()->Update(deltaTime);
+	// Iterate through objects to update animations
+	for (int i = 0; i<objects.size(); i++)
+	{
+		DisplayableObject* obj = objects[i];
+		animated_obj = dynamic_cast<Animation*>(obj); // Cast to animation
+		if (animated_obj != NULL) // If cast successful
+			animated_obj->Update(deltaTime); // Call update sequence for obj
+	}
+	Clean();
+	
+}
+
+Camera* MyScene::GetCam() {
+	return GetCamera();
+}
+
+void MyScene::Clean() {
+	for (int i = 0; i < objects.size(); i++)
+	{
+		ProjectileObject* animated_obj = dynamic_cast<ProjectileObject*>(objects[i]);
+		if (animated_obj != NULL) {
+			if (animated_obj->isFinished()) {
+				delete objects[i];
+				objects.erase(objects.begin()+i,objects.begin()+i+1);
+			}
+		}
+
+	}
+}
+
+void MyScene::Draw() {
+	// Clear colour and depth buffers
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	// Update based on window details (also sets initial projection properties)
+	Reshape(windowWidth, windowHeight);
+	// Reset MODELVIEW matrix
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	// Setup viewing properties
+	this->GetCamera()->SetupCamera();
+	// Display all objects in the Scene
+	for (int i = 0; i < objects.size(); i++)
+	{
+		DisplayableObject* obj = objects[i];
+		if(obj != nullptr)
+			objects[i]->Display();
+		
+	}
+	// Zealous reset of MODELVIEW matrix
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	// Dump silent GL errors into console output
+	CheckGLError();
 }
 
 std::vector<Node*> InitialiseNodes(std::vector<Node*> crnrs) {
@@ -37,10 +97,10 @@ std::vector<Node*> InitialiseNodes(std::vector<Node*> crnrs) {
 void MyScene::Initialise()
 {
 	Light* light = new Light(new Vertex(50,60,10),GL_LIGHT0);
-	AddObjectToScene(light);
+	AddObj(light);
 
 	light = new Light(new Vertex(-50, 60, 10), GL_LIGHT1);
-	AddObjectToScene(light);
+	AddObj(light);
 	std::vector<Vertex*> points;
 	points.push_back(new Vertex(0.f, -10.f, 0.f));
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
@@ -50,24 +110,24 @@ void MyScene::Initialise()
 	corners = InitialiseNodes(corners);
 
 	ObjLoader* ldr = new ObjLoader();
-	ldr->LoadObj("Models/cube.obj",true);
+	ldr->LoadObj("Models/Tower.obj",true);
 	TowerObject* obj = new TowerObject(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat(),this);
 	//std::vector<Vertex*> vertices = ldr->getVerts();
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
-	AddObjectToScene(obj);
+	AddObj(obj);
 
 	//Player
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Man.obj",false);
 	PlayerObject* player = new PlayerObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
-	AddObjectToScene(player);
+	AddObj(player);
 
 	//Monster
 	ldr = new ObjLoader();
-	ldr->LoadObj("Models/Monster.obj",false);
+	ldr->LoadObj("Models/Monster.obj",true);
 	EnemyObject* enemy = new EnemyObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(),corners, ldr->getMat());
-	AddObjectToScene(enemy);
+	AddObj(enemy);
 	enemies.push_back(enemy);
 	
 	
