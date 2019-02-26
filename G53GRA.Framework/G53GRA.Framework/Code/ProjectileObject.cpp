@@ -32,10 +32,12 @@ void ProjectileObject::Update(const double& deltaTime) {
 	
 	Object::Update(deltaTime);
 	ReTarget();
-	posX += speedX * deltaTime * dirX*3;
-	posY += speedY * deltaTime * dirY*3;
-	posZ += speedZ * deltaTime * dirZ*3;
-	if (dirX == 0 && dirY == 0 && dirY == 0) {
+	posX += speedX * deltaTime * dirX*15;
+	posY += speedY * deltaTime * dirY*15;
+	posZ += speedZ * deltaTime * dirZ*15;
+	if (std::abs(target->posX - posX) < 5 &&
+		std::abs(target->posY+10 - posY) < 5 && 
+		std::abs(target->posZ - posZ) < 5) {
 		
 		bFinished = true;
 	}
@@ -48,29 +50,29 @@ bool ProjectileObject::isFinished() {
 void ProjectileObject::ReTarget() {
 	dirX = target->posX - posX;
 	if (dirX != 0) {
-		if (std::abs(dirX) < 5) {
-			dirX = 0;
-		}
-		else {
+		//if (std::abs(dirX) < 5) {
+		//	dirX = 0;
+		//}
+		//else {
 			dirX >= 0 ? dirX = 1 : dirX = -1;
-		}
+		//}
 	}
 	dirY = target->posY+10 - posY;
 	if (dirY != 0) {
-		if (std::abs(dirY) < 5) {
-			dirY = 0;
-		}
-		else {
+		//if (std::abs(dirY) < 5) {
+		//	dirY = 0;
+		//}
+		//else {
 			dirY >= 0 ? dirY = 1 : dirY = -1;
-		}
+		//}
 	}
 	dirZ = target->posZ - posZ;
 	if (dirZ != 0) {
-		if (std::abs(dirZ) < 5) {
-			dirZ = 0;
-		}
-		else {
+		//if (std::abs(dirZ) < 5) {
+		//	dirZ = 0;
+		//}
+		//else {
 			dirZ >= 0 ? dirZ = 1 : dirZ = -1;
-		}
+		//}
 	}
 }
