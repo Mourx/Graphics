@@ -9,6 +9,7 @@
 #include "Object.h"
 #include "PlayerObject.h"
 #include "TowerObject.h"
+#include "SkyBox.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -116,6 +117,11 @@ void MyScene::Initialise()
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
 	AddObj(obj);
+
+	//SkyBox
+	ldr->LoadObj("Models/Cube.obj",true);
+	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Dirt.bmp");
+	AddObj(sky);
 
 	//Player
 	ldr = new ObjLoader();

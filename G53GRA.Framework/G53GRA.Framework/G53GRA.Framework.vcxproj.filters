@@ -78,6 +78,9 @@
     <ClCompile Include="Code\TowerObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\SkyBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -152,6 +155,9 @@
     <ClInclude Include="Code\TowerObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\SkyBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Tex1.bmp">
@@ -185,6 +191,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Textures\Barn.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Dirt.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\cube.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
