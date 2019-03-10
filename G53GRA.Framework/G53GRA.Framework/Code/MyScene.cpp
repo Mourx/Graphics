@@ -119,8 +119,9 @@ void MyScene::Initialise()
 	AddObj(obj);
 
 	//SkyBox
+	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Cube.obj",true);
-	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Dirt.bmp");
+	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Sky.bmp");
 	AddObj(sky);
 
 	//Player

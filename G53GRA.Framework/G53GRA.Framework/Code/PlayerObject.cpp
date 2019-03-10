@@ -7,6 +7,8 @@ PlayerObject::PlayerObject(std::vector<Vertex*> verts, std::vector<Vertex*> norm
 	posX = -5;
 	posY = 0;
 	posZ = 25;
+	material = "Textures/Dirt.bmp";
+	texID = Scene::GetTexture(material);
 }
 
 

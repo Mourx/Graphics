@@ -72,9 +72,9 @@ void Camera::Update(const double& deltaTime)
 	}
 	if (wKey) {
 		add(eyePosition, up, speed);
-		if (eyePosition[1] >= 100) {
-			eyePosition[1] = 100;
-		}
+		//if (eyePosition[1] >= 100) {
+			//eyePosition[1] = 100;
+		//}
 	}
 	if (sKey){
 		sub(eyePosition, up, speed);
