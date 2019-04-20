@@ -13,6 +13,7 @@ ObjLoader::~ObjLoader()
 
 
 void ObjLoader::LoadObj(const char* filename,bool bUV) {
+	
 	FILE * file = fopen(filename, "r");
 	if (file == NULL) {
 		printf("ERROR: Can't find file\n");

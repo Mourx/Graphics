@@ -121,12 +121,12 @@ void MyScene::Initialise()
 	//SkyBox
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Cube.obj",true);
-	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Sky.bmp");
+	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/SkyDark.bmp");
 	AddObj(sky);
 
 	//Player
 	ldr = new ObjLoader();
-	ldr->LoadObj("Models/Man.obj",false);
+	ldr->LoadObj("Models/FullFire.obj",true);
 	PlayerObject* player = new PlayerObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
 	AddObj(player);
 

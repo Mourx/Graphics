@@ -75,34 +75,5 @@ void Light::Display() {
 }
 
 void Light::Update(const double& deltaTime) {
-	/*glEnable(GL_LIGHTING);
-
-	/*	Lighting property settings:
-	*		 glLightfv( GLenum light , GLenum pname , const GLfloat* params )
-	*           |      ____________   ____________   _____________________
-	* accepts float vector  |              |                   |
-	*                specifies light       |           parameter values
-	*             GL_LIGHTi for i=0..8     |      (as defined in constructor)
-	*								 light parameter
-	*					either GL_AMBIENT, GL_DIFFUSE, GL_SPECULAR,
-	*					     GL_POSITION or GL_SPOT_DIRECTION
-	*
-	* Some properties take only single value parameters, so you must use glLightf() instead
-	* The following properties take single values only:
-	*    GL_SPOT_EXPONENT (0..128), GL_SPOT_CUTOFF (0..90, 180), GL_CONSTANT_ATTENUATION,
-	*        GL_LINEAR_ATTENUATION, and GL_QUADRATIC ATTENUATION
-	*        GL_LINEAR_ATTENUATION, and GL_QUADRATIC ATTENUATION
-	*/
-	/*
-	// Set properties GL_LIGHT0 (overwrites default global framework lighting)
-	glLightfv(GL_LIGHT0, GL_AMBIENT, _ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, _diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, _specular);
-	GLfloat lPosition[4] = { pos[0], pos[1], pos[2], _positionalLight };
-	glLightfv(GL_LIGHT0, GL_POSITION, lPosition);
-
-	// enable GL_LIGHT0 with these defined properties
 	
-	glEnable(GL_LIGHT0);
-	*/
 }

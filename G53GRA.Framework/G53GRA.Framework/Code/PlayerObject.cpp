@@ -7,7 +7,7 @@ PlayerObject::PlayerObject(std::vector<Vertex*> verts, std::vector<Vertex*> norm
 	posX = -5;
 	posY = 0;
 	posZ = 25;
-	material = "Textures/Dirt.bmp";
+	material = "Textures/CampfireMap.bmp";
 	texID = Scene::GetTexture(material);
 }
 
@@ -17,6 +17,9 @@ PlayerObject::~PlayerObject()
 }
 
 void PlayerObject::Display() {
-	bUV = false;
+	texID = Scene::GetTexture(material);
+	glScalef(0.5, 0.5, 0.5);
+	Object::bUV = true;
 	Object::Display();
+	glScalef(2, 2, 2);
 }
