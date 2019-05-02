@@ -120,14 +120,14 @@ void MyScene::Initialise()
 
 	//SkyBox
 	ldr = new ObjLoader();
-	ldr->LoadObj("Models/Cube.obj",true);
-	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/SkyDark.bmp");
+	ldr->LoadObj("Models/SkyBox.obj",true);
+	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Stars.bmp");
 	AddObj(sky);
 
-	//Player
+	//Campfire
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/FullFire.obj",true);
-	PlayerObject* player = new PlayerObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
+	CampfireObject* player = new CampfireObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
 	AddObj(player);
 
 	//Monster
@@ -150,7 +150,7 @@ void MyScene::Initialise()
 	//AddObjectToScene(new Triangle(points, new Vertex(0,200,0), "Textures/Tex1.bmp",1));
 	segments.push_back(new FloorSegment(points, new Vertex(100, 100, 0), "Textures/Tex1.bmp", 1));
 	FloorTile* floorTile = new FloorTile(segments, this);
-	floorTile->AddToScene();
+	//floorTile->AddToScene();
 	points.clear();
 
 	for (int i = 0; i < 20; i++) {
@@ -170,7 +170,7 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(40.f,10.f, 0.f));
 	points.push_back(new Vertex(30.f, 10.f, 0.f));
 	Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/science_lab.bmp");
-	AddObj(tile);
+	//AddObj(tile);
 	points.clear();
 
 	points.push_back(new Vertex(30.f, -10.f, 0.f));
@@ -178,7 +178,7 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(40.f, 0.f, 0.f));
 	points.push_back(new Vertex(30.f, 0.f, 0.f));
 	Soldier* soldier = new Soldier(points, new Vertex(255, 255, 255), "Textures/monster_nose_squid.bmp",1);
-	AddObj(soldier);
+	//AddObj(soldier);
 	points.clear();
 	Path* path = new Path(corners, this);
 

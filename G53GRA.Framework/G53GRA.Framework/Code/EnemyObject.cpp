@@ -7,7 +7,7 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	
 	nodeList = nodes;
 	posX = nodes[nextNode]->posX+5;
-	posY = 0;
+	posY = 20;
 	posZ = nodes[nextNode]->posY -5;
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Cube.obj", true);
@@ -15,7 +15,25 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	Object* orb2 = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	orbitals.push_back(orb1);
 	orbitals.push_back(orb2);
-
+	ldr->LoadObj("Models/Robot_Limb.obj", true);
+	LimbObject* LeftArm = new LimbObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	LimbObject* RightArm = new LimbObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	LimbObject* LeftLeg = new LimbObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	LimbObject* RightLeg = new LimbObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	limbs.push_back(LeftArm);
+	limbs.push_back(RightArm);
+	limbs.push_back(LeftLeg);
+	limbs.push_back(RightLeg);
+	for (int i = 0; i < limbs.size()/2; i++) {
+		limbs[i]->posX = this->posX + 10;
+		limbs[i]->posX = this->posY + 10;
+		limbs[i]->posX = this->posZ + 0;
+	}
+	for (int i = limbs.size()/2; i < limbs.size(); i++) {
+		limbs[i]->posX = this->posX - 10;
+		limbs[i]->posX = this->posY - 10;
+		limbs[i]->posX = this->posZ - 0;
+	}
 }
 
 
@@ -120,31 +138,77 @@ void EnemyObject::UpdateChildren(double deltaTime) {
 	orbitals[1]->posX = posX * 10;
 	orbitals[1]->posY = posY * 10;
 	orbitals[1]->posZ = posZ * 10;
+
+	for (int i = 0; i < limbs.size() / 2; i++) {
+		limbs[i]->posX = this->posX + 0;
+		limbs[i]->posY = this->posY + 0;
+		limbs[i]->posZ = this->posZ + 0;
+
+		limbs[i]->pos2X = 5;
+		limbs[i]->pos2Y = 5;
+		limbs[i]->pos2Z = 0;
+
+		
+		limbs[i]->angle = this->angle + 0;
+		limbs[i]->angleX = this->angleX + 0;
+		limbs[i]->angleY = this->angleY + 0;
+		limbs[i]->angleZ = this->angleZ + 0;
+
+		//limbs[i]->setAngle2(this->angle2, this->angle2X, this->angle2Y, this->angle2Z);
+
+	}
+	for (int i = limbs.size() / 2; i < limbs.size(); i++) {
+		limbs[i]->posX = this->posX - 0;
+		limbs[i]->posY = this->posY - 0;
+		limbs[i]->posZ = this->posZ - 0;
+
+		limbs[i]->pos2X = -6;
+		limbs[i]->pos2Y = 5;
+		limbs[i]->pos2Z = 0;
+
+		limbs[i]->angle = this->angle + 0;
+		limbs[i]->angleX = this->angleX + 0;
+		limbs[i]->angleY = this->angleY + 0;
+		limbs[i]->angleZ = this->angleZ + 0;
+	}
+	for (int i = 0; i < limbs.size(); i++) {
+		limbs[i]->Update(deltaTime);
+		
+	}
 }
 
 void EnemyObject::Display() {
 	bUV = true;
 	texID = Scene::GetTexture("Textures/Steel.bmp");
-
+	Object::angle += 1;
+	Object::angleY = 1.0;
 	Object::Display();
 
-	//glPushMatrix();
 	//glTranslatef(0, 0, 0);
-	glScalef(0.1,0.1,0.1);
+	glPushMatrix();
+	glScalef(0.1, 0.1, 0.1);
+
 	//glPushMatrix();
 	glTranslatef(orb1TranslateX, 150, orb1TranslateZ);
 	orbitals[0]->Display();
-	glTranslatef(-orb1TranslateX, -150, -orb1TranslateZ);
+	//glTranslatef(-orb1TranslateX, -150, -orb1TranslateZ);
 
-	//glPopMatrix;
+	glPopMatrix();
 
-	//glPushMatrix();
+	glPushMatrix();
+	glScalef(0.1, 0.1, 0.1);
+
 	glTranslatef(orb2TranslateX, 150, orb2TranslateZ);
 	orbitals[1]->Display();
-	glTranslatef(-orb2TranslateX, -150, -orb2TranslateZ);
-
-	//glPopMatrix();
-	glScalef(10, 10, 10);
+	//glTranslatef(-orb2TranslateX, -150, -orb2TranslateZ);
+	glPopMatrix();
+	 
+	glPushMatrix();
+	limbs[0]->Display();
+	glPopMatrix();
+	glPushMatrix();
+	limbs[2]->Display();
+	glPopMatrix();
 	//glPopMatrix;
 }
 

@@ -21,6 +21,6 @@ void SkyBox::Display() {
 	glFrontFace(GL_CW);
 	glScalef(100, 100, 100);
 	Object::Display();
-	glScalef(0.01, 0.01, 0.01);
+	glScalef(0.01,0.01, 0.01);
 	glFrontFace(GL_CCW);
 }

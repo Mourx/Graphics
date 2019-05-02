@@ -23,10 +23,17 @@ Object::~Object()
 void Object::Display() {
 	std::vector<Vertex*> points;
 	glPushMatrix();
+
+	
+
 	glTranslatef(posX, posY, posZ);
+	glRotatef(angle, angleX, angleY, angleZ);
+	glTranslatef(pos2X, pos2Y, pos2Z);
+	glRotatef(angle2, angle2X, angle2Y, angle2Z);
+
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
-	//glScalef(1, 1, 1);
+	glScalef(scaleX, scaleY, scaleZ);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < vertices.size(); i+=3) {
 		glColor3f(1,1,1);
@@ -52,5 +59,34 @@ void Object::Display() {
 	glPopMatrix();
 
 }
-void Object::Update(const double& deltaTime) {}
+void Object::Update(const double& deltaTime) {
+	
+
+}
+
+void Object::setPosition(float x, float y, float z) {
+	posX = x;
+	posY = y;
+	posZ = z;
+}
+
+void Object::setPosition2(float x, float y, float z) {
+	pos2X = x;
+	pos2Y = y;
+	pos2Z = z;
+}
+
+void Object::setAngle2(float a, float x, float y, float z) {
+	angle2 = a;
+	angle2X = x;
+	angle2Y = y;
+	angle2Z = z;
+}
+
+void Object::setScale(float x, float y, float z) {
+	scaleX = x;
+	scaleY = y;
+	scaleZ = z;
+}
+
 void Object::HandleKey(unsigned char key, int state, int x, int y) {}
