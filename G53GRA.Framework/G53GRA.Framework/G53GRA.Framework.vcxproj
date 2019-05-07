@@ -9,8 +9,9 @@
   <ItemGroup>
     <ClCompile Include="Code\EnemyObject.cpp" />
     <ClCompile Include="Code\FloorTile.cpp" />
+    <ClCompile Include="Code\LegObject.cpp" />
     <ClCompile Include="Code\Light.cpp" />
-    <ClCompile Include="Code\LimbObject.cpp" />
+    <ClCompile Include="Code\ArmObject.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\FloorSegment.cpp" />
@@ -57,7 +58,8 @@
     <ClInclude Include="Code\Object.h" />
     <ClInclude Include="Code\TowerObject.h" />
     <ClInclude Include="Code\SkyBox.h" />
-    <ClInclude Include="Code\LimbObject.h" />
+    <ClInclude Include="Code\ArmObject.h" />
+    <ClInclude Include="Code\LegObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Barn.bmp" />

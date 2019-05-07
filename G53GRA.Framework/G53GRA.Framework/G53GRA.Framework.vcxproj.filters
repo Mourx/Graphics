@@ -81,7 +81,10 @@
     <ClCompile Include="Code\SkyBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\LimbObject.cpp">
+    <ClCompile Include="Code\ArmObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\LegObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,7 +164,10 @@
     <ClInclude Include="Code\SkyBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\LimbObject.h">
+    <ClInclude Include="Code\ArmObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\LegObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

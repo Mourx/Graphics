@@ -28,8 +28,7 @@ void Object::Display() {
 
 	glTranslatef(posX, posY, posZ);
 	glRotatef(angle, angleX, angleY, angleZ);
-	glTranslatef(pos2X, pos2Y, pos2Z);
-	glRotatef(angle2, angle2X, angle2Y, angle2Z);
+
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
@@ -70,17 +69,11 @@ void Object::setPosition(float x, float y, float z) {
 	posZ = z;
 }
 
-void Object::setPosition2(float x, float y, float z) {
-	pos2X = x;
-	pos2Y = y;
-	pos2Z = z;
-}
-
-void Object::setAngle2(float a, float x, float y, float z) {
-	angle2 = a;
-	angle2X = x;
-	angle2Y = y;
-	angle2Z = z;
+void Object::setAngle(float a, float x, float y, float z) {
+	angle = a;
+	angleX = x;
+	angleY = y;
+	angleZ = z;
 }
 
 void Object::setScale(float x, float y, float z) {

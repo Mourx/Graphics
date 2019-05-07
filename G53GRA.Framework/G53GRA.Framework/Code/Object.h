@@ -15,8 +15,7 @@ public:
 	void Update(const double& deltaTime);
 	void HandleKey(unsigned char key, int state, int x, int y);
 	void setPosition(float x, float y, float z);
-	void setPosition2(float x, float y, float z);
-	void setAngle2(float a, float x, float y, float z);
+	void setAngle(float a, float x, float y, float z);
 	void setScale(float x, float y, float z);
 
 	std::vector<Vertex*> vertices;
@@ -24,12 +23,10 @@ public:
 	std::vector<Vertex*> normals;
 
 	double posX, posY, posZ;
-	double pos2X, pos2Y, pos2Z;
 	double scaleX = 1, scaleY = 1, scaleZ = 1;
 	bool bUV = true;
 	std::string material;
 	int texID = Scene::GetTexture("Textures/cube.bmp");
 	double angle = 0, angleX = 0, angleY = 0, angleZ = 0;
-	double angle2 = 0, angle2X = 0, angle2Y = 0, angle2Z = 0;
 };
 

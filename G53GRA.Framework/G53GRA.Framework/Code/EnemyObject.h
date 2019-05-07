@@ -4,7 +4,8 @@
 #include "Vertex.h"
 #include "Node.h"
 #include "ObjLoader.h"
-#include "LimbObject.h"
+#include "ArmObject.h"
+#include "LegObject.h"
 
 class EnemyObject :
 	public Object
@@ -23,7 +24,10 @@ private:
 	double diffz = 0;
 	bool bDone = false;
 	std::vector<Object*> orbitals;
-	std::vector<LimbObject*> limbs;
+	ArmObject* leftArm;
+	ArmObject* rightArm;
+	LegObject* leftLeg;
+	LegObject* rightLeg;
 	ObjLoader* ldr;
 	double animateTime = 0;
 	double orb1MoveX = 0, orb1MoveZ = 0, orb2MoveX = 0, orb2MoveZ = 0;
