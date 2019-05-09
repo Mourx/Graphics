@@ -97,11 +97,12 @@ std::vector<Node*> InitialiseNodes(std::vector<Node*> crnrs) {
 
 void MyScene::Initialise()
 {
-	Light* light = new Light(new Vertex(50,60,10),GL_LIGHT0);
+	Light* light = new Light(new Vertex(40,100,0),GL_LIGHT0);
+	
 	AddObj(light);
 
 	light = new Light(new Vertex(-50, 60, 10), GL_LIGHT1);
-	AddObj(light);
+	//AddObj(light);
 	std::vector<Vertex*> points;
 	points.push_back(new Vertex(0.f, -10.f, 0.f));
 	points.push_back(new Vertex(20.f, -10.f, 0.f));
@@ -121,8 +122,49 @@ void MyScene::Initialise()
 	//SkyBox
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/SkyBox.obj",true);
-	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Stars.bmp");
+	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/space.bmp");
 	AddObj(sky);
+
+	//house
+	//ldr = new ObjLoader();
+	//ldr->LoadObj("Models/cottage_obj.obj", true);
+	//Object* house = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/cottage_diffuse.bmp");
+	//house->texID = GetTexture("Textures/cottage_diffuse.bmp");
+	//AddObj(house);
+
+	//hedges
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/hedge.obj", true);
+	for (int i = 0; i < 4; i++) {
+		Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+		hedge->texID = GetTexture("Textures/hedge.bmp");
+		hedge->setPosition(100, 0, i*45-70);
+		hedge->setScale(1.7, 1, 1);
+		hedge->setAngle(90, 0, 1, 0);
+		//hedge->setScale(0.1, 0.1, 0.1);
+		AddObj(hedge);
+	}
+	for (int i = 0; i < 4; i++) {
+		Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+		hedge->texID = GetTexture("Textures/hedge.bmp");
+		hedge->setPosition(i * 48 - 70, 0, -97);
+		hedge->setScale(1.75, 1, 1);
+		hedge->setAngle(0, 0, 1, 0);
+		//hedge->setScale(0.1, 0.1, 0.1);
+		AddObj(hedge);
+	}
+	for (int i = 0; i < 4; i++) {
+		Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+		hedge->texID = GetTexture("Textures/hedge.bmp");
+		hedge->setPosition(-98, 0, i * 50 - 70);
+		hedge->setScale(1.85, 1, 1);
+		hedge->setAngle(90, 0, 1, 0);
+		//hedge->setScale(0.1, 0.1, 0.1);
+		AddObj(hedge);
+	}
+	
+	
+	
 
 	//Campfire
 	ldr = new ObjLoader();

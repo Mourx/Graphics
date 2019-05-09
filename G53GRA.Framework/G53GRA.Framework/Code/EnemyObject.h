@@ -23,6 +23,7 @@ private:
 	double diffx = 0;
 	double diffz = 0;
 	bool bDone = false;
+	bool bRotate = false;
 	std::vector<Object*> orbitals;
 	ArmObject* leftArm;
 	ArmObject* rightArm;
@@ -35,6 +36,7 @@ private:
 	double interpOrb1XA, interpOrb1XB, interpOrb1ZA, interpOrb1ZB;
 	double interpOrb2XA, interpOrb2XB, interpOrb2ZA, interpOrb2ZB;
 	double keyframe = 1.0;
+	double targetangle = 0;
 	
 };
 

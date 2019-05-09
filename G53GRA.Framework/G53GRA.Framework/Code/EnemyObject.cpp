@@ -13,8 +13,12 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	ldr->LoadObj("Models/Cube.obj", true);
 	Object* orb1 = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	Object* orb2 = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	orb1->texID = Scene::GetTexture("Textures/Steel.bmp");
+	orb2->texID = Scene::GetTexture("Textures/Steel.bmp");
 	orbitals.push_back(orb1);
 	orbitals.push_back(orb2);
+	orbitals[0]->posY = 80;
+	orbitals[1]->posY = 80;
 	ldr->LoadObj("Models/Robot_Limb.obj", true);
 	leftArm = new ArmObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	rightArm = new ArmObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
@@ -22,7 +26,7 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	rightLeg = new LegObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	
 	rightArm->posX = 5;
-	rightArm->posY = 5;
+	rightArm->posY = 10;
 	rightArm->posZ = 0;
 
 	rightLeg->posX = 2;
@@ -34,13 +38,15 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	leftLeg->posZ = 0;
 
 	leftArm->posX = -6;
-	leftArm->posY = 5;
+	leftArm->posY = 10;
 	leftArm->posZ = 0;
 	
 	leftArm->setBend(15);
 	rightArm->setBend(-45);
-	leftLeg->setBend(315);
-	rightLeg->setBend(270);
+	leftLeg->setBend(300);
+	rightLeg->setBend(240);
+
+	angle = 270;
 }
 
 
@@ -135,16 +141,11 @@ void EnemyObject::UpdateChildren(double deltaTime) {
 			keyframe = 4;
 		}
 	}
-	orb1TranslateX += (deltaTime) * (interpOrb1XB - interpOrb1XA);
-	orb1TranslateZ += (deltaTime) * (interpOrb1ZB - interpOrb1ZA);
-	orb2TranslateX += (deltaTime) * (interpOrb2XB - interpOrb2XA);
-	orb2TranslateZ += (deltaTime) * (interpOrb2ZB - interpOrb2ZA);
-	orbitals[0]->posX = posX * 10;
-	orbitals[0]->posY = posY * 10;
-	orbitals[0]->posZ = posZ * 10;
-	orbitals[1]->posX = posX * 10;
-	orbitals[1]->posY = posY * 10;
-	orbitals[1]->posZ = posZ * 10;
+	orbitals[0]->posX += (deltaTime) * (interpOrb1XB - interpOrb1XA);
+	orbitals[0]->posZ += (deltaTime) * (interpOrb1ZB - interpOrb1ZA);
+	orbitals[1]->posX += (deltaTime) * (interpOrb2XB - interpOrb2XA);
+	orbitals[1]->posZ += (deltaTime) * (interpOrb2ZB - interpOrb2ZA);
+	
 
 	
 	leftArm->Update(deltaTime);
@@ -196,7 +197,7 @@ void EnemyObject::Display() {
 	glPushMatrix();
 	glScalef(0.1, 0.1, 0.1);
 
-	glTranslatef(orb1TranslateX, 150, orb1TranslateZ);
+	//glTranslatef(orb1TranslateX, 150, orb1TranslateZ);
 	orbitals[0]->Display();
 
 	glPopMatrix();
@@ -204,7 +205,7 @@ void EnemyObject::Display() {
 	glPushMatrix();
 	glScalef(0.1, 0.1, 0.1);
 
-	glTranslatef(orb2TranslateX, 150, orb2TranslateZ);
+	//glTranslatef(orb2TranslateX, 150, orb2TranslateZ);
 	orbitals[1]->Display();
 	glPopMatrix();
 	 
@@ -232,6 +233,7 @@ void EnemyObject::Update(const double& deltaTime) {
 		posZ += diffz * 0.1;
 	}
 	else {
+		bRotate = true;
 		posX = nodeList[nextNode]->posX + 5;
 		posZ = nodeList[nextNode]->posY - 5;
 		nextNode++;
@@ -239,6 +241,33 @@ void EnemyObject::Update(const double& deltaTime) {
 			nextNode = 0;
 			posX = nodeList[nextNode]->posX + 5;
 			posZ = nodeList[nextNode]->posY - 5;
+		}
+	}
+	if (bRotate) {
+		diffx = (nodeList[nextNode]->posX + 5 - posX);
+		diffz = (nodeList[nextNode]->posY - 5 - posZ);
+		if (diffx != 0) {
+			diffx >= 0 ? (diffx = 1, targetangle <=90 ? targetangle = -90: targetangle = 270) : (diffx = -1,targetangle = 90);
+			
+		}if (diffz != 0) {
+			diffz >= 0 ? (diffz = 1, targetangle>0 ? targetangle = 180:targetangle = -180) : (diffz = -1, targetangle = 0);
+		}
+		float incdir = 0;
+		if(angle - targetangle >= 0){
+			if (angle > 180) {
+				incdir = 1;
+			}
+			else {
+				incdir = -1;
+			}
+		}
+		else {
+			incdir = 1;
+		}
+		angle += incdir;
+		if (angle == 360) angle = 0;
+		if (angle == targetangle) {
+			bRotate = false;
 		}
 	}
 	UpdateChildren(deltaTime);

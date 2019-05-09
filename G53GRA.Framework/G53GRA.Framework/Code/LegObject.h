@@ -16,7 +16,7 @@ public:
 private:
 	Object * JointTop, *JointMiddle;
 	Object * LimbTop, *LimbBottom;
-	Object * EndObj;
+	Object * FootObj;
 	ObjLoader* ldr;
 	double rotation = 0;
 	float angleBig = 270;

@@ -15,6 +15,9 @@ LegObject::LegObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std
 	ldr->LoadObj("Models/Robot_Joint.obj", true);
 	JointTop = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	JointMiddle = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Robot_Foot.obj", true);
+	FootObj = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 
 }
 LegObject::~LegObject()
@@ -29,6 +32,7 @@ void LegObject::Display() {
 	JointTop->texID = Scene::GetTexture("Textures/Steel.bmp");
 	LimbBottom->texID = Scene::GetTexture("Textures/Steel.bmp");
 	JointMiddle->texID = Scene::GetTexture("Textures/Steel.bmp");
+	FootObj->texID = Scene::GetTexture("Textures/Steel.bmp");
 	scaleZ = 0.6;
 	float limbLength = 24 * scaleZ;
 	float offsetX = (limbLength - 5) * cos(angleLittle * PI / 180.0);
@@ -54,11 +58,16 @@ void LegObject::Display() {
 	JointMiddle->Display();
 
 	LimbBottom->Display();
-
+	limbLength = 24 * scaleZ;
+	offsetX = (limbLength - 5) * cos(angleLittle * PI / 180.0);
+	offsetY = (limbLength - 5) * sin(angleLittle * PI / 180.0);
+	FootObj->setScale(0.5, 0.5, 0.5);
+	FootObj->setPosition(LimbBottom->posX, LimbBottom->posY - offsetY, LimbBottom->posZ - offsetX);
+	FootObj->Display();
 }
 void LegObject::Update(const double& deltaTime) {
 	if (bDirection == 0) {
-		if (angleBig <= 315) {
+		if (angleBig <= 300) {
 			angleBig += 0.5;
 			angleBend += 0.4;
 		}
@@ -67,7 +76,7 @@ void LegObject::Update(const double& deltaTime) {
 		}
 	}
 	if (bDirection == 1) {
-		if (angleBig >= 270) {
+		if (angleBig >= 240) {
 			angleBig -= 0.5;
 			angleBend -= 0.4;
 		}
@@ -84,7 +93,7 @@ void LegObject::Update(const double& deltaTime) {
 void LegObject::setBend(float angle) {
 	angleBig = angle;
 	angleBend = 45 + (angle / 0.5)*0.4;
-	if (angleBig <= 315) {
+	if (angleBig <= 300) {
 		bDirection = 0;
 	}
 	else {
