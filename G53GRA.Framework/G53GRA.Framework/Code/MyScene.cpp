@@ -162,8 +162,35 @@ void MyScene::Initialise()
 		//hedge->setScale(0.1, 0.1, 0.1);
 		AddObj(hedge);
 	}
-	
-	
+	Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+	hedge->texID = GetTexture("Textures/hedge.bmp");
+	hedge->setPosition(-80, 0, 98);
+	hedge->setScale(1.85, 1, 1);
+	hedge->setAngle(0, 0, 1, 0);
+	//hedge->setScale(0.1, 0.1, 0.1);
+	AddObj(hedge);
+	hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+	hedge->texID = GetTexture("Textures/hedge.bmp");
+	hedge->setPosition(-40, 0, 98);
+	hedge->setScale(1.5, 1, 1);
+	hedge->setAngle(0, 0, 1, 0);
+	//hedge->setScale(0.1, 0.1, 0.1);
+	AddObj(hedge);
+	hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+	hedge->texID = GetTexture("Textures/hedge.bmp");
+	hedge->setPosition(25, 0, 98);
+	hedge->setScale(1.2, 1, 1);
+	hedge->setAngle(0, 0, 1, 0);
+	//hedge->setScale(0.1, 0.1, 0.1);
+	AddObj(hedge);
+	hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
+	hedge->texID = GetTexture("Textures/hedge.bmp");
+	hedge->setPosition(55, 0, 98);
+	hedge->setScale(1.2, 1, 1);
+	hedge->setAngle(0, 0, 1, 0);
+	//hedge->setScale(0.1, 0.1, 0.1);
+	AddObj(hedge);
+
 	
 
 	//Campfire
