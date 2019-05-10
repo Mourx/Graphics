@@ -12,13 +12,16 @@ public:
 
 	void Display();
 	void Update(const double& deltaTime);
+	void setPosition(float x, float y, float z);
 	inline void ToggleLightType() { _positionalLight = fmod(_positionalLight + 1.f, 2.f); }
+
+	Vertex* position;
 private:
 
 	// Taken from Demos to learn.
 	// member variable describing radius for rotation
 	double _radius;
-	Vertex* position;
+	
 	// reflectance model parameters for LIGHT
 	GLfloat *_ambient, *_diffuse, *_specular;
 	int lightNo = GL_LIGHT0;

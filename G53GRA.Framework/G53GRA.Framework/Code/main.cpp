@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 {
 	// Create new instance of MyScene - the OpenGL context on which your coursework is built
 	MyScene *scene = NULL;
-	scene = new MyScene(argc, argv, "G53GRA", static_cast<const int>(640), static_cast<const int>(480));
+	scene = new MyScene(argc, argv, "G53GRA", static_cast<const int>(1000), static_cast<const int>(720));
 
 	// Begin the main GL loop
 	scene->Run();

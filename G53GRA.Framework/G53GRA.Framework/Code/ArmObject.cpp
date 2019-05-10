@@ -31,7 +31,7 @@ void ArmObject::Display() {
 	LimbBottom->texID = Scene::GetTexture("Textures/Steel.bmp");
 	JointMiddle->texID = Scene::GetTexture("Textures/Steel.bmp");
 	scaleZ = 0.45;
-	float limbLength = 24 * scaleZ;
+	float limbLength = 27 * scaleZ;
 	float offsetX = (limbLength - 5) * cos(angleLittle * PI / 180.0);
 	float offsetY = (limbLength - 5) * sin(angleLittle * PI / 180.0);
 

@@ -29,7 +29,7 @@
     <ClCompile Include="Code\Tile.cpp" />
     <ClCompile Include="Code\Node.cpp" />
     <ClCompile Include="Code\ObjLoader.cpp" />
-    <ClCompile Include="Code\PlayerObject.cpp" />
+    <ClCompile Include="Code\CampfireObject.cpp" />
     <ClCompile Include="Code\ProjectileObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -37,7 +37,7 @@
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\FloorSegment.h" />
     <ClInclude Include="Code\ObjLoader.h" />
-    <ClInclude Include="Code\PlayerObject.h" />
+    <ClInclude Include="Code\CampfireObject.h" />
     <ClInclude Include="Code\ProjectileObject.h" />
     <ClInclude Include="Code\Tile.h" />
     <ClInclude Include="Code\EnemyObject.h" />
@@ -79,7 +79,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
     <RootNamespace>G53GRAFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

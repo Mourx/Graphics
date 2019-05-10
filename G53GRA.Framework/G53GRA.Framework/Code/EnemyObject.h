@@ -6,6 +6,7 @@
 #include "ObjLoader.h"
 #include "ArmObject.h"
 #include "LegObject.h"
+#include "Light.h"
 
 class EnemyObject :
 	public Object
@@ -37,6 +38,7 @@ private:
 	double interpOrb2XA, interpOrb2XB, interpOrb2ZA, interpOrb2ZB;
 	double keyframe = 1.0;
 	double targetangle = 0;
+	Light* spotLight;
 	
 };
 

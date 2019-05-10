@@ -7,7 +7,7 @@
 #include "Path.h"
 #include "ObjLoader.h"
 #include "Object.h"
-#include "PlayerObject.h"
+#include "CampfireObject.h"
 #include "TowerObject.h"
 #include "SkyBox.h"
 
@@ -97,11 +97,11 @@ std::vector<Node*> InitialiseNodes(std::vector<Node*> crnrs) {
 
 void MyScene::Initialise()
 {
-	Light* light = new Light(new Vertex(40,100,0),GL_LIGHT0);
+	Light* light = new Light(new Vertex(-40,100,0),GL_LIGHT0);
 	
-	AddObj(light);
+	//AddObj(light);
 
-	light = new Light(new Vertex(-50, 60, 10), GL_LIGHT1);
+	
 	//AddObj(light);
 	std::vector<Vertex*> points;
 	points.push_back(new Vertex(0.f, -10.f, 0.f));
@@ -114,6 +114,7 @@ void MyScene::Initialise()
 	ObjLoader* ldr = new ObjLoader();
 	ldr->LoadObj("Models/Tower.obj",true);
 	TowerObject* obj = new TowerObject(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat(),this);
+	obj->texID = GetTexture("Textures/Log.bmp");
 	//std::vector<Vertex*> vertices = ldr->getVerts();
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
@@ -138,8 +139,8 @@ void MyScene::Initialise()
 	for (int i = 0; i < 4; i++) {
 		Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 		hedge->texID = GetTexture("Textures/hedge.bmp");
-		hedge->setPosition(100, 0, i*45-70);
-		hedge->setScale(1.7, 1, 1);
+		hedge->setPosition(100, -5, i*50-70);
+		hedge->setScale(1.85, 1, 1);
 		hedge->setAngle(90, 0, 1, 0);
 		//hedge->setScale(0.1, 0.1, 0.1);
 		AddObj(hedge);
@@ -147,7 +148,7 @@ void MyScene::Initialise()
 	for (int i = 0; i < 4; i++) {
 		Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 		hedge->texID = GetTexture("Textures/hedge.bmp");
-		hedge->setPosition(i * 48 - 70, 0, -97);
+		hedge->setPosition(i * 48 - 70, -5, -97);
 		hedge->setScale(1.75, 1, 1);
 		hedge->setAngle(0, 0, 1, 0);
 		//hedge->setScale(0.1, 0.1, 0.1);
@@ -156,7 +157,7 @@ void MyScene::Initialise()
 	for (int i = 0; i < 4; i++) {
 		Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 		hedge->texID = GetTexture("Textures/hedge.bmp");
-		hedge->setPosition(-98, 0, i * 50 - 70);
+		hedge->setPosition(-98, -5, i * 50 - 70);
 		hedge->setScale(1.85, 1, 1);
 		hedge->setAngle(90, 0, 1, 0);
 		//hedge->setScale(0.1, 0.1, 0.1);
@@ -164,34 +165,63 @@ void MyScene::Initialise()
 	}
 	Object* hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 	hedge->texID = GetTexture("Textures/hedge.bmp");
-	hedge->setPosition(-80, 0, 98);
+	hedge->setPosition(-80, -5, 98);
 	hedge->setScale(1.85, 1, 1);
 	hedge->setAngle(0, 0, 1, 0);
 	//hedge->setScale(0.1, 0.1, 0.1);
 	AddObj(hedge);
 	hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 	hedge->texID = GetTexture("Textures/hedge.bmp");
-	hedge->setPosition(-40, 0, 98);
+	hedge->setPosition(-40, -5, 98);
 	hedge->setScale(1.5, 1, 1);
 	hedge->setAngle(0, 0, 1, 0);
 	//hedge->setScale(0.1, 0.1, 0.1);
 	AddObj(hedge);
 	hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 	hedge->texID = GetTexture("Textures/hedge.bmp");
-	hedge->setPosition(25, 0, 98);
+	hedge->setPosition(25, -5, 98);
 	hedge->setScale(1.2, 1, 1);
 	hedge->setAngle(0, 0, 1, 0);
 	//hedge->setScale(0.1, 0.1, 0.1);
 	AddObj(hedge);
 	hedge = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/hedge.bmp");
 	hedge->texID = GetTexture("Textures/hedge.bmp");
-	hedge->setPosition(55, 0, 98);
+	hedge->setPosition(55, -5, 98);
 	hedge->setScale(1.2, 1, 1);
 	hedge->setAngle(0, 0, 1, 0);
 	//hedge->setScale(0.1, 0.1, 0.1);
 	AddObj(hedge);
 
-	
+	//portals
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Portal.obj", true);
+	Object* portal = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	portal->texID = GetTexture("Textures/Log.bmp");
+	portal->setPosition(85, 0, 97);
+	portal->setAngle(90, 0, 1, 0);
+	AddObj(portal);
+	portal = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	portal->texID = GetTexture("Textures/Log.bmp");
+	portal->setPosition(-5, 0, 97);
+	portal->setAngle(90, 0, 1, 0);
+	AddObj(portal);
+
+	//portal images
+	points.clear();
+	points.push_back(new Vertex(93, 0.f, 98.f));
+	points.push_back(new Vertex(75.f, 0.f, 98.f));
+	points.push_back(new Vertex(75.f, 25.f, 98.f));
+	points.push_back(new Vertex(93.f, 25.f, 98.f));
+	Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Portal.bmp");
+	AddObj(tile);
+	points.clear();
+	points.clear();
+	points.push_back(new Vertex(3, 0.f, 98.f));
+	points.push_back(new Vertex(-15.f, 0.f, 98.f));
+	points.push_back(new Vertex(-15.f, 25.f, 98.f));
+	points.push_back(new Vertex(3.f, 25.f, 98.f));
+	tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Portal.bmp");
+	AddObj(tile);
 
 	//Campfire
 	ldr = new ObjLoader();
@@ -234,18 +264,12 @@ void MyScene::Initialise()
 
 		}
 	}
-	points.push_back(new Vertex(30.f, 0.f, 0.f));
-	points.push_back(new Vertex(40.f, 0.f, 0.f));
-	points.push_back(new Vertex(40.f,10.f, 0.f));
-	points.push_back(new Vertex(30.f, 10.f, 0.f));
-	Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/science_lab.bmp");
-	//AddObj(tile);
-	points.clear();
+	
 
-	points.push_back(new Vertex(30.f, -10.f, 0.f));
-	points.push_back(new Vertex(40.f, -10.f, 0.f));
-	points.push_back(new Vertex(40.f, 0.f, 0.f));
-	points.push_back(new Vertex(30.f, 0.f, 0.f));
+	points.push_back(new Vertex(30.f, 10.f, 0.f));
+	points.push_back(new Vertex(40.f, 10.f, 0.f));
+	points.push_back(new Vertex(40.f, 20.f, 0.f));
+	points.push_back(new Vertex(30.f, 20.f, 0.f));
 	Soldier* soldier = new Soldier(points, new Vertex(255, 255, 255), "Textures/monster_nose_squid.bmp",1);
 	//AddObj(soldier);
 	points.clear();

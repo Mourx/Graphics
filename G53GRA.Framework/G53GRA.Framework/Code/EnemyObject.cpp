@@ -17,8 +17,8 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	orb2->texID = Scene::GetTexture("Textures/Steel.bmp");
 	orbitals.push_back(orb1);
 	orbitals.push_back(orb2);
-	orbitals[0]->posY = 80;
-	orbitals[1]->posY = 80;
+	orbitals[0]->posY = 130;
+	orbitals[1]->posY = 130;
 	ldr->LoadObj("Models/Robot_Limb.obj", true);
 	leftArm = new ArmObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	rightArm = new ArmObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
@@ -29,7 +29,7 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	rightArm->posY = 10;
 	rightArm->posZ = 0;
 
-	rightLeg->posX = 2;
+	rightLeg->posX = 4;
 	rightLeg->posY = 2;
 	rightLeg->posZ = 0;
 
@@ -37,7 +37,7 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	leftLeg->posY = 2;
 	leftLeg->posZ = 0;
 
-	leftArm->posX = -6;
+	leftArm->posX = -5;
 	leftArm->posY = 10;
 	leftArm->posZ = 0;
 	
@@ -46,7 +46,10 @@ EnemyObject::EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms,
 	leftLeg->setBend(300);
 	rightLeg->setBend(240);
 
-	angle = 270;
+	angle = 0;
+
+
+	spotLight = new Light(new Vertex(0, 10, -5), GL_LIGHT0);
 }
 
 
@@ -162,8 +165,8 @@ void EnemyObject::Display() {
 	Object::angleY = 1.0;
 	std::vector<Vertex*> points;
 
-
-
+	posY = 12;
+	scaleY = 0.6;
 	glTranslatef(posX, posY, posZ);
 	glRotatef(angle, angleX, angleY, angleZ);
 
@@ -192,7 +195,7 @@ void EnemyObject::Display() {
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
-
+	spotLight->Display();
 
 	glPushMatrix();
 	glScalef(0.1, 0.1, 0.1);
@@ -214,6 +217,7 @@ void EnemyObject::Display() {
 	leftLeg->Display();
 	rightArm->Display();
 	rightLeg->Display();
+
 	glPopMatrix();
 }
 
@@ -229,8 +233,8 @@ void EnemyObject::Update(const double& deltaTime) {
 		}if (diffz != 0) {
 			diffz >= 0 ? diffz = 1 : diffz = -1;
 		}
-		posX += diffx * 0.1;
-		posZ += diffz * 0.1;
+		posX += diffx * 0.3;
+		posZ += diffz * 0.3;
 	}
 	else {
 		bRotate = true;
@@ -241,6 +245,7 @@ void EnemyObject::Update(const double& deltaTime) {
 			nextNode = 0;
 			posX = nodeList[nextNode]->posX + 5;
 			posZ = nodeList[nextNode]->posY - 5;
+			angle = 0;
 		}
 	}
 	if (bRotate) {
@@ -264,7 +269,7 @@ void EnemyObject::Update(const double& deltaTime) {
 		else {
 			incdir = 1;
 		}
-		angle += incdir;
+		angle += incdir*1.5;
 		if (angle == 360) angle = 0;
 		if (angle == targetangle) {
 			bRotate = false;
