@@ -32,10 +32,11 @@ void Object::Display() {
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
+	glEnable(GL_COLOR_MATERIAL);
 	glScalef(scaleX, scaleY, scaleZ);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < vertices.size(); i+=3) {
-		glColor3f(1,1,1);
+		glColor3f(red,green,blue);
 		glNormal3f(normals[i]->x,normals[i]->y,normals[i]->z);
 		points.push_back(vertices[i]);
 		points.push_back(vertices[i+1]);
@@ -80,6 +81,12 @@ void Object::setScale(float x, float y, float z) {
 	scaleX = x;
 	scaleY = y;
 	scaleZ = z;
+}
+
+void Object::setColour(float r, float g, float b) {
+	red = r;
+	green = g;
+	blue = b;
 }
 
 void Object::HandleKey(unsigned char key, int state, int x, int y) {}

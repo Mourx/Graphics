@@ -35,6 +35,10 @@ void ArmObject::Display() {
 	float offsetX = (limbLength - 5) * cos(angleLittle * PI / 180.0);
 	float offsetY = (limbLength - 5) * sin(angleLittle * PI / 180.0);
 
+	JointTop->setColour(red, green, blue);
+	JointMiddle->setColour(red, green, blue);
+	LimbTop->setColour(red, green, blue);
+	LimbBottom->setColour(red, green, blue);
 
 	JointTop->setPosition(posX, posY, posZ);
 	JointTop->setScale(0.75, 0.4, 0.4);

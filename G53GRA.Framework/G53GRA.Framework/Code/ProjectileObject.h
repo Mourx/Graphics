@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "EnemyObject.h"
 class ProjectileObject :
 	public Object
 {

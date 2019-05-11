@@ -18,6 +18,7 @@ public:
 	void Display();
 	void Update(const double& deltaTime);
 	void UpdateChildren(double deltaTime);
+	void Flash(const double& deltaTime);
 private:
 	std::vector<Node*> nodeList;
 	int nextNode = 0;
@@ -39,6 +40,8 @@ private:
 	double keyframe = 1.0;
 	double targetangle = 0;
 	Light* spotLight;
+	double red = 1, green = 1, blue = 1;
+	double flashtime;
 	
 };
 

@@ -123,7 +123,7 @@ void MyScene::Initialise()
 	//SkyBox
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/SkyBox.obj",true);
-	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/space.bmp");
+	SkyBox* sky = new SkyBox(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/space2.bmp");
 	AddObj(sky);
 
 	//house
@@ -222,6 +222,19 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(3.f, 25.f, 98.f));
 	tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Portal.bmp");
 	AddObj(tile);
+
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Tree.obj", true);
+	Object* tree = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	tree->texID = GetTexture("Textures/tree.bmp");
+	tree->setPosition(0, 0, -10);
+	//tree->setAngle(90, 0, 0, 0);
+	AddObj(tree);
+	tree = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	tree->texID = GetTexture("Textures/tree.bmp");
+	tree->setPosition(-10, 0, -10);
+	//tree->setAngle(90, 0, 0, 0);
+	AddObj(tree);
 
 	//Campfire
 	ldr = new ObjLoader();

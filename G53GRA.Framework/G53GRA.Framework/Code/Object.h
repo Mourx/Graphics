@@ -17,6 +17,7 @@ public:
 	void setPosition(float x, float y, float z);
 	void setAngle(float a, float x, float y, float z);
 	void setScale(float x, float y, float z);
+	void setColour(float r, float f, float b);
 
 	std::vector<Vertex*> vertices;
 	std::vector<Vertex*> uvs;
@@ -28,5 +29,6 @@ public:
 	std::string material;
 	int texID = Scene::GetTexture("Textures/cube.bmp");
 	double angle = 0, angleX = 0, angleY = 0, angleZ = 0;
+	double red = 1, green = 1, blue = 1;
 };
 

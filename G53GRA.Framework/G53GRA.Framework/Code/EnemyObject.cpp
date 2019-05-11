@@ -169,13 +169,14 @@ void EnemyObject::Display() {
 	scaleY = 0.6;
 	glTranslatef(posX, posY, posZ);
 	glRotatef(angle, angleX, angleY, angleZ);
-
+	
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
+	glColor3f(red, green, blue);
+	glEnable(GL_COLOR_MATERIAL);
 	glScalef(scaleX, scaleY, scaleZ);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < vertices.size(); i += 3) {
-		glColor3f(1, 1, 1);
 		glNormal3f(normals[i]->x, normals[i]->y, normals[i]->z);
 		points.push_back(vertices[i]);
 		points.push_back(vertices[i + 1]);
@@ -212,12 +213,16 @@ void EnemyObject::Display() {
 	orbitals[1]->Display();
 	glPopMatrix();
 	 
-	
+	leftArm->setColour(red, green, blue);
+	leftLeg->setColour(red, green, blue);
+	rightArm->setColour(red, green, blue);
+	rightLeg->setColour(red, green, blue);
+
 	leftArm->Display();
 	leftLeg->Display();
 	rightArm->Display();
 	rightLeg->Display();
-
+	glColor3f(1, 1, 1);
 	glPopMatrix();
 }
 
@@ -276,4 +281,17 @@ void EnemyObject::Update(const double& deltaTime) {
 		}
 	}
 	UpdateChildren(deltaTime);
+	flashtime += deltaTime;
+	if (flashtime >= 0.5) {
+		red = 1;
+		green = 1;
+		blue = 1;
+		flashtime = 0;
+	}
+}
+
+void EnemyObject::Flash(const double& deltaTime) {
+	red = 1;
+	green = 0.2;
+	blue = 0.2;
 }
