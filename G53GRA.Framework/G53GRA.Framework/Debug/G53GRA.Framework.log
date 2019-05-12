@@ -1,8 +1,10 @@
-﻿  CampfireObject.cpp
+﻿  TowerObject.cpp
 c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\framework\utility\texture.h(4): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
-  c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\framework\utility\texture.h(4): note: command-line arguments:  see previous definition of '_CRT_SECURE_NO_WARNINGS'
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\campfireobject.cpp(29): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\campfireobject.cpp(39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\campfireobject.cpp(43): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\campfireobject.cpp(47): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp: note: see previous definition of '_CRT_SECURE_NO_WARNINGS'
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(32): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(41): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\towerobject.cpp(67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   G53GRA.Framework.vcxproj -> C:\Users\Joel\Documents\Graphics\Graphics\G53GRA.Framework\Debug\G53GRA.Framework.exe

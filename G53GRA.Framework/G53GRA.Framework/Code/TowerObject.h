@@ -12,11 +12,12 @@ public:
 	void Fire();
 	EnemyObject* FindTarget();
 	void Update(const double& deltaTime);
-
+	void Display();
 private:
 	double damage = 1;
 	MyScene* scene;
 	EnemyObject* target;
 	double fireTime = 0;
+	Object* turret;
 };
 

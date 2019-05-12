@@ -112,9 +112,10 @@ void MyScene::Initialise()
 	corners = InitialiseNodes(corners);
 
 	ObjLoader* ldr = new ObjLoader();
-	ldr->LoadObj("Models/Tower.obj",true);
+	ldr->LoadObj("Models/Turret_bottom.obj",true);
 	TowerObject* obj = new TowerObject(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat(),this);
-	obj->texID = GetTexture("Textures/Log.bmp");
+	obj->texID = GetTexture("Textures/Steel.bmp");
+	obj->setPosition(-15, 0, 10);
 	//std::vector<Vertex*> vertices = ldr->getVerts();
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
