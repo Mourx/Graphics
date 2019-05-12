@@ -10,9 +10,9 @@ CampfireObject::CampfireObject(std::vector<Vertex*> verts, std::vector<Vertex*> 
 	posZ = 25;
 	material = "Textures/CampfireMap.bmp";
 	texID = Scene::GetTexture(material);
-	light = new Light(new Vertex(posX, posY+2, posZ-10), GL_LIGHT1);
-	light2 = new Light(new Vertex(posX+2, posY + 4, posZ - 8), GL_LIGHT2);
-	light3 = new Light(new Vertex(posX+4, posY + 6, posZ - 12), GL_LIGHT3);
+	light = new Light(new Vertex(0, 2, 5), GL_LIGHT1);
+	light2 = new Light(new Vertex(2, 4, -2), GL_LIGHT2);
+	light3 = new Light(new Vertex(4, 6,0), GL_LIGHT3);
 }
 
 
@@ -24,11 +24,15 @@ void CampfireObject::Display() {
 	texID = Scene::GetTexture(material);
 	glScalef(0.5, 0.5, 0.5);
 	Object::bUV = true;
-	Object::Display();
-	glScalef(2, 2, 2);
+	Object::Display();	
+	glPushMatrix();
+	glTranslatef(posX, posY, posZ);
 	light->Display();
 	light2->Display();
 	light3->Display();
+	glPopMatrix();
+	glScalef(2, 2, 2);
+	
 }
 
 void CampfireObject::Update(const double& deltaTime) {

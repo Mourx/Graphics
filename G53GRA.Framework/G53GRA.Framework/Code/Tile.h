@@ -8,7 +8,7 @@ class Tile :
 	public DisplayableObject
 {
 public:
-	Tile(std::vector<Vertex*> points, Vertex* colour, std::string fileName);
+	Tile(std::vector<Vertex*> points, Vertex* colour,double size, std::string fileName);
 	~Tile();
 
 	void Display();
@@ -26,6 +26,6 @@ private:
 	std::vector<Vertex*> points;
 	std::string fileName;
 	Vertex* colour;
-
+	double size = 0;
 };
 

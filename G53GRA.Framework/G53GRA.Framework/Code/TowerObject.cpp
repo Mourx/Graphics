@@ -24,7 +24,7 @@ void TowerObject::Fire() {
 }
 void TowerObject::Update(const double& deltaTime) {
 	fireTime += deltaTime;
-	if (fireTime >= 1) {
+	if (fireTime >= 2) {
 		fireTime = 0;
 		Fire();
 	}

@@ -212,7 +212,7 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(75.f, 0.f, 98.f));
 	points.push_back(new Vertex(75.f, 25.f, 98.f));
 	points.push_back(new Vertex(93.f, 25.f, 98.f));
-	Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Portal.bmp");
+	Tile* tile = new Tile(points, new Vertex(255, 255, 255),0, "Textures/Portal.bmp");
 	AddObj(tile);
 	points.clear();
 	points.clear();
@@ -220,27 +220,40 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(-15.f, 0.f, 98.f));
 	points.push_back(new Vertex(-15.f, 25.f, 98.f));
 	points.push_back(new Vertex(3.f, 25.f, 98.f));
-	tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Portal.bmp");
+	tile = new Tile(points, new Vertex(255, 255, 255),0, "Textures/Portal.bmp");
 	AddObj(tile);
 
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Tree.obj", true);
 	Object* tree = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
 	tree->texID = GetTexture("Textures/tree.bmp");
-	tree->setPosition(0, 0, -10);
+	tree->setPosition(50, 0, -20);
 	//tree->setAngle(90, 0, 0, 0);
 	AddObj(tree);
+
+	//house
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/House.obj", true);
+	Object* house = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	house->texID = GetTexture("Textures/house.bmp");
+	house->setPosition(50, 0, -50);
+	house->setAngle(145, 0, 1, 0);
+	AddObj(house);
+
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Tree2.obj", true);
 	tree = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
 	tree->texID = GetTexture("Textures/tree.bmp");
 	tree->setPosition(-10, 0, -10);
 	//tree->setAngle(90, 0, 0, 0);
-	AddObj(tree);
+	//AddObj(tree);
 
 	//Campfire
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/FullFire.obj",true);
-	CampfireObject* player = new CampfireObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
-	AddObj(player);
+	CampfireObject* fire = new CampfireObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(), ldr->getMat());
+	fire->setPosition(45, 0, -50);
+	AddObj(fire);
 
 	//Monster
 	ldr = new ObjLoader();
@@ -271,7 +284,7 @@ void MyScene::Initialise()
 			points.push_back(new Vertex(-90.f + 10 * j, 0.f, -90.f + 10 * i));
 			points.push_back(new Vertex(-90.f + 10 * j, 0.f, - 100.f + 10 * i));
 			points.push_back(new Vertex(-100.f + 10 * j, 0.f, -100.f + 10 * i));
-			Tile* tile = new Tile(points, new Vertex(255, 255, 255), "Textures/Grass.bmp");
+			Tile* tile = new Tile(points, new Vertex(255, 255, 255), 10, "Textures/Grass.bmp");
 			AddObj(tile);
 			points.clear();
 
