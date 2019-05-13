@@ -112,10 +112,10 @@ void MyScene::Initialise()
 	corners = InitialiseNodes(corners);
 
 	ObjLoader* ldr = new ObjLoader();
-	ldr->LoadObj("Models/Turret_bottom.obj",true);
+	ldr->LoadObj("Models/Turret_top.obj",true);
 	TowerObject* obj = new TowerObject(ldr->getVerts(),ldr->getNorms(),ldr->getUVs(),ldr->getMat(),this);
 	obj->texID = GetTexture("Textures/Steel.bmp");
-	obj->setPosition(-15, 0, 10);
+	obj->setPosition(-15, 5, 10);
 	//std::vector<Vertex*> vertices = ldr->getVerts();
 	//std::vector<Vertex*> uvs = ldr->getUVs();
 	//std::vector<Vertex*> normals = ldr->getNorms();
@@ -209,19 +209,21 @@ void MyScene::Initialise()
 
 	//portal images
 	points.clear();
-	points.push_back(new Vertex(93, 0.f, 98.f));
-	points.push_back(new Vertex(75.f, 0.f, 98.f));
-	points.push_back(new Vertex(75.f, 25.f, 98.f));
-	points.push_back(new Vertex(93.f, 25.f, 98.f));
+	points.push_back(new Vertex(48, 0.f, 49.f));
+	points.push_back(new Vertex(37.f, 0.f, 49.f));
+	points.push_back(new Vertex(37.f, 12.f, 49.f));
+	points.push_back(new Vertex(48.f, 12.f, 49.f));
 	Tile* tile = new Tile(points, new Vertex(255, 255, 255),0, "Textures/Portal.bmp");
+	tile->setScale(2);
 	AddObj(tile);
 	points.clear();
 	points.clear();
-	points.push_back(new Vertex(3, 0.f, 98.f));
-	points.push_back(new Vertex(-15.f, 0.f, 98.f));
-	points.push_back(new Vertex(-15.f, 25.f, 98.f));
-	points.push_back(new Vertex(3.f, 25.f, 98.f));
+	points.push_back(new Vertex(2, 0.f, 49.f));
+	points.push_back(new Vertex(-7.f, 0.f, 49.f));
+	points.push_back(new Vertex(-7.f, 12.f, 49.f));
+	points.push_back(new Vertex(2.f, 12.f, 49.f));
 	tile = new Tile(points, new Vertex(255, 255, 255),0, "Textures/Portal.bmp");
+	tile->setScale(2);
 	AddObj(tile);
 
 	ldr = new ObjLoader();
@@ -231,6 +233,15 @@ void MyScene::Initialise()
 	tree->setPosition(50, 0, -20);
 	//tree->setAngle(90, 0, 0, 0);
 	AddObj(tree);
+
+	ldr = new ObjLoader();
+	ldr->LoadObj("Models/Pumpkin.obj", true);
+	Object* pumpkin = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	pumpkin->texID = GetTexture("Textures/pumpkin.bmp");
+	pumpkin->setPosition(75, 0, -20);
+	pumpkin->setScale(0.6, 0.6, 0.6);
+	//tree->setAngle(90, 0, 0, 0);
+	AddObj(pumpkin);
 
 	//house
 	ldr = new ObjLoader();
@@ -262,23 +273,8 @@ void MyScene::Initialise()
 	EnemyObject* enemy = new EnemyObject(ldr->getVerts(), ldr->getNorms(),ldr->getUVs(),corners, ldr->getMat());
 	AddObj(enemy);
 	enemies.push_back(enemy);
+
 	
-	
-	//AddObjectToScene(new Triangle(points,new Vertex(200,0,0), "Textures/Tex1.bmp",0));
-	std::vector<FloorSegment*> segments;
-	segments.push_back(new FloorSegment(points, new Vertex(100, 100, 0), "Textures/Tex1.bmp", 0));
-	points.clear();
-
-	points.push_back(new Vertex(20.f, -10.f, -20.f));
-	points.push_back(new Vertex(0.f, -10.f, -20.f));
-	points.push_back(new Vertex(20.f, -10.f, 0.f));
-
-	//AddObjectToScene(new Triangle(points, new Vertex(0,200,0), "Textures/Tex1.bmp",1));
-	segments.push_back(new FloorSegment(points, new Vertex(100, 100, 0), "Textures/Tex1.bmp", 1));
-	FloorTile* floorTile = new FloorTile(segments, this);
-	//floorTile->AddToScene();
-	points.clear();
-
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 20; j++) {
 			points.push_back(new Vertex(-100.f + 10 * j, 0.f, -90.f + 10 * i));
@@ -286,6 +282,7 @@ void MyScene::Initialise()
 			points.push_back(new Vertex(-90.f + 10 * j, 0.f, - 100.f + 10 * i));
 			points.push_back(new Vertex(-100.f + 10 * j, 0.f, -100.f + 10 * i));
 			Tile* tile = new Tile(points, new Vertex(255, 255, 255), 10, "Textures/Grass.bmp");
+			tile->setScale(2);
 			AddObj(tile);
 			points.clear();
 
@@ -297,11 +294,9 @@ void MyScene::Initialise()
 	points.push_back(new Vertex(40.f, 10.f, 0.f));
 	points.push_back(new Vertex(40.f, 20.f, 0.f));
 	points.push_back(new Vertex(30.f, 20.f, 0.f));
-	Soldier* soldier = new Soldier(points, new Vertex(255, 255, 255), "Textures/monster_nose_squid.bmp",1);
-	//AddObj(soldier);
+	
 	points.clear();
 	Path* path = new Path(corners, this);
-
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	
 

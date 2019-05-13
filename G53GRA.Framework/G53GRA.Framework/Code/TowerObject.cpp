@@ -1,15 +1,17 @@
 #include "TowerObject.h"
 
+#define PI 3.14159265
 
 
 TowerObject::TowerObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::string mat, MyScene* scn) : Object(verts,norms,uvs,mat)
 {
 	scene = scn;
 	ObjLoader* ldr = new ObjLoader();
-	ldr->LoadObj("Models/Turret_top.obj", true);
+	ldr->LoadObj("Models/Turret_bottom.obj", true);
 	turret = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
 	turret->texID = Scene::GetTexture("Textures/Steel.bmp");
-	turret->setPosition(0, 5, 0);
+	turret->setPosition(0, -5, 0);
+	this->setAngle(90, 0, 1, 0);
 }
 
 
@@ -58,21 +60,63 @@ void TowerObject::Display() {
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
-	turret->Display();
-	glPopMatrix();
+	for (int i = 0; i < projs.size(); i++) {
+		projs[i]->angle = angle;
+		projs[i]->Display();
+	}
 
+	turret->Display();
+
+	glPopMatrix();
+	
 }
 
 void TowerObject::Fire() {
-	ProjectileObject* proj = new ProjectileObject(new Vertex(posX, posY+5, posZ), new Vertex(1, 1, 1), FindTarget());
-	scene->AddObj(proj);
+	
+	bSide = bSide * -1;
+	ProjectileObject* proj = new ProjectileObject(new Vertex(2 * bSide, 2,0), new Vertex(1, 1, 1), FindTarget(),this);
+	projs.push_back(proj);
+	
 }
+
 void TowerObject::Update(const double& deltaTime) {
 	fireTime += deltaTime;
 	if (fireTime >= 2) {
 		fireTime = 0;
 		Fire();
 	}
+	for (int i = 0; i < projs.size(); i++) {
+		projs[i]->Update(deltaTime);
+		if (projs[i]->isFinished()) {
+			delete projs[i];
+			projs.erase(projs.begin() + i, projs.begin() + i + 1);
+			
+		}
+	}
+	if (target != nullptr) {
+		/*
+		Vertex* vert = new Vertex(posX, posY, posZ);
+		Vertex* targetv = new Vertex(target->posX, target->posY, target->posZ);
+		vert->x = targetv->x - vert->x;
+		vert->y = targetv->y - vert->y;
+		vert->z = targetv->z - vert->z;
+		double vertLength = sqrt(pow(vert->x, 2) + pow(vert->y, 2) + pow(vert->z, 2));
+		vert->x = vert->x / vertLength;
+		vert->y = vert->y / vertLength;
+		vert->z = vert->z / vertLength;
+		double targetvLength = sqrt(pow(targetv->x, 2) + pow(targetv->y, 2) + pow(targetv->z, 2));
+		double dotprod = vert->x * targetv->x + vert->y * targetv->y + vert->z * targetv->z;
+		double cosTheta = dotprod / (vertLength * targetvLength);
+		*/
+		double diffx =target->posX - posX;
+		double diffz = target->posZ- posZ;
+		double totaldiff = sqrt(pow(diffx, 2) + pow(diffz, 2));
+		double arcsin = asin(-diffz / totaldiff) * 180 / PI;
+		double arctan = atan2(diffz, diffx) * 180 / PI;
+		double inversesin = (arcsin >= 0 ? 180-arcsin : 0-arcsin);
+		//double inversecos = acos(cosTheta) * 180 / PI;
 
+		angle = 180 - arctan;
+	}
 }
 

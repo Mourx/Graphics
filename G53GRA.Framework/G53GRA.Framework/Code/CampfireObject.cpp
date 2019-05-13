@@ -31,7 +31,7 @@ void CampfireObject::Display() {
 	light2->Display();
 	light3->Display();
 	glPopMatrix();
-	glScalef(2, 2, 2);
+	//glScalef(2, 2, 2);
 	
 }
 

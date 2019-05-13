@@ -5,7 +5,7 @@ class ProjectileObject :
 	public Object
 {
 public:
-	ProjectileObject(Vertex* position, Vertex* speed,Object* tg);
+	ProjectileObject(Vertex* position, Vertex* speed,Object* tg,Object* p);
 	~ProjectileObject();
 	void Display();
 
@@ -17,6 +17,7 @@ private:
 	double speedX, speedY, speedZ;
 	double dirX, dirY, dirZ;
 	Object* target;
+	Object* parent;
 	bool bFinished = false;
 };
 

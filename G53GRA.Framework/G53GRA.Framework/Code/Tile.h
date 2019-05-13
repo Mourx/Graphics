@@ -19,7 +19,7 @@ public:
 	void HandleMouse(int button, int state, int x, int y) {}
 	void HandleMouseDrag(int x, int y) {}
 	void HandleMouseMove(int x, int y) {}
-
+	void setScale(float);
 private:
 	float xrot, yrot, zrot;
 	float scale;

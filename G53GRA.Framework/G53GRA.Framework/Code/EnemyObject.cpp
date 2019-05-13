@@ -165,8 +165,12 @@ void EnemyObject::Display() {
 	Object::angleY = 1.0;
 	std::vector<Vertex*> points;
 
-	posY = 12;
-	scaleY = 0.6;
+	posY = 20;
+	scaleX = 2;
+	scaleY = 1.2;
+	scaleZ = 2;
+	glScalef(scaleX, scaleY, scaleZ);
+
 	glTranslatef(posX, posY, posZ);
 	glRotatef(angle, angleX, angleY, angleZ);
 	
@@ -174,7 +178,6 @@ void EnemyObject::Display() {
 	glBindTexture(GL_TEXTURE_2D, texID);
 	glColor3f(red, green, blue);
 	glEnable(GL_COLOR_MATERIAL);
-	glScalef(scaleX, scaleY, scaleZ);
 	glBegin(GL_TRIANGLES);
 	for (int i = 0; i < vertices.size(); i += 3) {
 		glNormal3f(normals[i]->x, normals[i]->y, normals[i]->z);

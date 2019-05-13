@@ -23,7 +23,7 @@ void Tile::Display()
 {
 	glPushMatrix();
 	int texID = Scene::GetTexture(fileName);
-	
+	glScalef(scale, scale, scale);
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_LIGHTING);
 	glBindTexture(GL_TEXTURE_2D, texID);
@@ -124,4 +124,8 @@ void Tile::Update(const double& deltaTime)
 void Tile::HandleKey(unsigned char key, int state, int x, int y)
 {
 
+}
+
+void Tile::setScale(float s) {
+	scale = s;
 }

@@ -19,5 +19,7 @@ private:
 	EnemyObject* target;
 	double fireTime = 0;
 	Object* turret;
+	std::vector<ProjectileObject*> projs;
+	int bSide = 1;
 };
 
