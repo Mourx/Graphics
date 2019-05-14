@@ -8,17 +8,16 @@ Light::~Light()
 
 
 Light::Light(Vertex* position,int light)
-	: _radius(200.0), _positionalLight(1.0f)
 {
 	lightNo = light;
-
+	_radius = 200;
 	// Set ambient colour of the light (off-grey)
 	static GLfloat ambient[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	
-	if (lightNo == GL_LIGHT0) {
+	//robot spotlight
+	if (lightNo == GL_LIGHT0 || GL_LIGHT5) {
 		// Set diffuse colour of the light (white)
 		static GLfloat diffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-		// Set specular icolour (white)
 		static GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 		this->position = position;
 		_positionalLight = 1.0f;
@@ -26,11 +25,11 @@ Light::Light(Vertex* position,int light)
 		_diffuse = diffuse;
 		_specular = specular;
 	}
-	else if (lightNo == GL_LIGHT1);
+	// campfire embers
+	else if (lightNo == GL_LIGHT1 || lightNo == GL_LIGHT2 || lightNo == GL_LIGHT3);
 	{
-		// Set diffuse colour of the light (red)
+		// Set diffuse colour of the light (orangey)
 		static GLfloat diffuse[] = { 1.0f, 0.45f, 0.f, 1.0f };
-		// Set specular icolour (white)
 		static GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 		this->position = position;
 		_ambient = ambient;
@@ -47,8 +46,11 @@ void Light::Display() {
 	// of the light) so it will only be coloured by glColor call
 	glEnable(GL_LIGHTING);
 	GLfloat _position[4];
-	if (lightNo == GL_LIGHT0) {
+
+	//robot spotlight, points in front of it
+	if (lightNo == GL_LIGHT0 || lightNo == GL_LIGHT5) {
 		
+		//lots of GL stuff to initialise light
 		_position[0] = position->x;
 		_position[1] = position->y;
 		_position[2] = position->z;
@@ -57,20 +59,15 @@ void Light::Display() {
 		glLightfv(lightNo, GL_AMBIENT, _ambient);
 		glLightfv(lightNo, GL_DIFFUSE, _diffuse);
 		glLightfv(lightNo, GL_SPECULAR, _specular);
-
 		glLightf(lightNo, GL_SPOT_CUTOFF, 20.0);
+		
+		//point diagonally down
 		GLfloat spot_direction[] = { 0, -1, -.5};
 		glLightfv(lightNo, GL_SPOT_DIRECTION, spot_direction);
 		glLightf(lightNo, GL_CONSTANT_ATTENUATION, 1);
-
 		glLightf(lightNo, GL_SPOT_EXPONENT, 20.0);
-		glPushMatrix();
 		glColor3f(1, 1, 1);
-		glBegin(GL_POINTS);
 
-		glVertex3f(position->x, position->y, position->z);
-		glEnd();
-		glPopMatrix();
 		glEnable(lightNo);
 	}
 	else if (lightNo == GL_LIGHT1 || lightNo == GL_LIGHT2 || lightNo == GL_LIGHT3) {
@@ -85,30 +82,19 @@ void Light::Display() {
 		glLightf(lightNo, GL_LINEAR_ATTENUATION, 0.5f);
 		glEnable(lightNo);
 		glPushMatrix();
+
+		//draw some points to look like embers
 		glColor3f(1, 0.45, 0);
-
-
 		glBegin(GL_POINTS);
-
 		glVertex3f(position->x, position->y, position->z);
+		glVertex3f(position->x+2, position->y+1, position->z+5);
+		glVertex3f(position->x-1, position->y-2, position->z-4);
+		glVertex3f(position->x - 6, position->y - 2, position->z - 4);
+		glVertex3f(position->x - 10, position->y - 4, position->z - 4);
+		glVertex3f(position->x - 15, position->y - 6, position->z - 4);
 		glEnd();
 		glPopMatrix();
-	}
-
-	glPushMatrix();
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	glDisable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
-	// Match colour of sphere to diffuse colour of light
-	//glColor4fv(_diffuse);
-	//glTranslatef(_position[0], _position[1], _position[2]);
-	//glutSolidSphere(1.0, 5, 5);
-	// Re-enable lighting after light source has been drawn
-	glEnable(GL_LIGHTING);
-	glPopAttrib();
-	glPopMatrix();
-	
-	
+	}	
 }
 
 void Light::Update(const double& deltaTime) {

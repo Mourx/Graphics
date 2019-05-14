@@ -1,7 +1,7 @@
 #include "Vertex.h"
 
 
-
+	// simple class to store vertices in
 Vertex::Vertex(float x,float y,float z)
 {
 	this->x = x;

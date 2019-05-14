@@ -13,6 +13,7 @@ PumpkinObject::~PumpkinObject()
 
 void PumpkinObject::HandleKey(unsigned char key, int state, int x, int y)
 {
+	// flip when space is pressed
 	switch (key)
 	{
 	case ' ':
@@ -29,6 +30,7 @@ void PumpkinObject::doFlip() {
 
 void PumpkinObject::Update(const double& deltaTime) {
 	
+	// jump up and spin the pumpkin
 	switch (state) {
 	case 0:
 		speedX = 0;
@@ -39,11 +41,11 @@ void PumpkinObject::Update(const double& deltaTime) {
 	case 1:
 		if (posY >= 25) {
 			state = 2;
-			angleIncrease = (360 - angle) / posY;
+			angleIncrease = 20;
 		}
 		else {
-			speedY = .5;
-			angleIncrease = 2;
+			speedY = .7;
+			angleIncrease = 10;
 			angleY = 1;
 			angleZ = 1;
 			break;
@@ -52,8 +54,9 @@ void PumpkinObject::Update(const double& deltaTime) {
 		if (posY <= 0) {
 			posY = 0;
 			state = 0;
+			angle = -angle;
 		}
-		speedY = -0.5;
+		speedY = -0.7;
 		break;
 	}
 

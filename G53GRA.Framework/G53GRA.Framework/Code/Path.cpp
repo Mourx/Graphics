@@ -25,11 +25,13 @@ void Path::FixPath() {
 	double x, y;
 	std::vector<Vertex*> points;
 
+
+	//	create a tile for until it reaches a corner
+	// then head toward next corner
 	for (int i = 0; i < corners.size()-1; i++) {
 		x = corners[i]->posX;
 		y = corners[i]->posY;
 		while (x != corners[i + 1]->posX || y != corners[i + 1]->posY) {
-			
 			points.push_back(new Vertex(x, 0.f, y));
 			points.push_back(new Vertex(x + 10, 0.f, y));
 			points.push_back(new Vertex(x + 10, 0.f, y - 10));
@@ -49,6 +51,7 @@ void Path::FixPath() {
 			points.clear();
 		}
 	}
+	//final tile has a cool metal texture
 	points.push_back(new Vertex(corners[corners.size() - 1]->posX, 0.f, corners[corners.size() - 1]->posY));
 	points.push_back(new Vertex(corners[corners.size() - 1]->posX + 10, 0.f, corners[corners.size() - 1]->posY));
 	points.push_back(new Vertex(corners[corners.size() - 1]->posX + 10, 0.f, corners[corners.size() - 1]->posY - 10));

@@ -12,13 +12,14 @@ class EnemyObject :
 	public Object
 {
 public:
-	EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::vector<Node*> nodes, std::string mat);
+	EnemyObject(std::vector<Vertex*> verts, std::vector<Vertex*> norms, std::vector<Vertex*> uvs, std::vector<Node*> nodes, std::string mat,int light);
 	~EnemyObject();
 
 	void Display();
 	void Update(const double& deltaTime);
 	void UpdateChildren(double deltaTime);
 	void Flash(const double& deltaTime);
+	void setNextNode(int node);
 private:
 	std::vector<Node*> nodeList;
 	int nextNode = 0;

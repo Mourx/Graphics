@@ -21,21 +21,24 @@ CampfireObject::~CampfireObject()
 }
 
 void CampfireObject::Display() {
-	texID = Scene::GetTexture(material);
+
+	//draw campfire
 	glScalef(0.5, 0.5, 0.5);
 	Object::bUV = true;
 	Object::Display();	
 	glPushMatrix();
+	//draw lights
 	glTranslatef(posX, posY, posZ);
 	light->Display();
 	light2->Display();
 	light3->Display();
 	glPopMatrix();
-	//glScalef(2, 2, 2);
+
 	
 }
 
 void CampfireObject::Update(const double& deltaTime) {
+	//make the lights float up like embers
 	light->setPosition(light->position->x, light->position->y + 0.2, light->position->z);
 	if (light->position->y >= 10) {
 		light->position->y = 0;

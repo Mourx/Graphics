@@ -12,6 +12,7 @@ Tile::Tile(std::vector<Vertex*> points, Vertex* colour,double sz, std::string fi
 	yrot = 0.0f;
 	zrot = 0.0f;
 	scale = 0.5f;
+	texID = Scene::GetTexture(fileName);
 }
 
 
@@ -22,7 +23,7 @@ Tile::~Tile()
 void Tile::Display()
 {
 	glPushMatrix();
-	int texID = Scene::GetTexture(fileName);
+	
 	glScalef(scale, scale, scale);
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_LIGHTING);
@@ -31,6 +32,7 @@ void Tile::Display()
 	float shininess = 128.0f;
 	float wDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
+	// splits the grass tiles up into smaller parts to improve lighting 
 	if (size > 0) {
 		glBegin(GL_QUADS);
 		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, wDiffuse);
@@ -93,6 +95,8 @@ void Tile::Display()
 		glVertex3f(points[0]->x, points[0]->y, points[0]->z - size);
 		glEnd();
 	}
+
+	// just draws the portal images normally
 	else {
 		glBegin(GL_QUADS);
 		glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, wDiffuse);

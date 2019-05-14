@@ -8,24 +8,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\EnemyObject.cpp" />
-    <ClCompile Include="Code\FloorTile.cpp" />
     <ClCompile Include="Code\LegObject.cpp" />
     <ClCompile Include="Code\Light.cpp" />
     <ClCompile Include="Code\ArmObject.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
-    <ClCompile Include="Code\FloorSegment.cpp" />
     <ClCompile Include="Code\Object.cpp" />
     <ClCompile Include="Code\Path.cpp" />
     <ClCompile Include="Code\PumpkinObject.cpp" />
     <ClCompile Include="Code\SkyBox.cpp" />
-    <ClCompile Include="Code\Soldier.cpp" />
     <ClCompile Include="Code\TowerObject.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
     <ClCompile Include="Framework\Utility\Texture.cpp" />
-    <ClCompile Include="Code\Triangle.cpp" />
     <ClCompile Include="Code\Vertex.cpp" />
     <ClCompile Include="Code\Tile.cpp" />
     <ClCompile Include="Code\Node.cpp" />
@@ -34,9 +30,7 @@
     <ClCompile Include="Code\ProjectileObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\FloorTile.h" />
     <ClInclude Include="Code\MyScene.h" />
-    <ClInclude Include="Code\FloorSegment.h" />
     <ClInclude Include="Code\ObjLoader.h" />
     <ClInclude Include="Code\CampfireObject.h" />
     <ClInclude Include="Code\ProjectileObject.h" />
@@ -50,10 +44,8 @@
     <ClInclude Include="Framework\Utility\Camera.h" />
     <ClInclude Include="Framework\Utility\Texture.h" />
     <ClInclude Include="Framework\Utility\VectorMath.h" />
-    <ClInclude Include="Code\Triangle.h" />
     <ClInclude Include="Code\Vertex.h" />
     <ClInclude Include="Code\Light.h" />
-    <ClInclude Include="Code\Soldier.h" />
     <ClInclude Include="Code\Node.h" />
     <ClInclude Include="Code\Path.h" />
     <ClInclude Include="Code\Object.h" />

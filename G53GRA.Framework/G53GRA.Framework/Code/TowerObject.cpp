@@ -19,21 +19,19 @@ TowerObject::~TowerObject()
 {
 }
 
+	//finds the first enemy, shoots it
 EnemyObject* TowerObject::FindTarget() {
 	target = scene->getEnemies()[0];
 	return target;
 }
 
 void TowerObject::Display() {
+
+	//Object Display code but without popping til after drawing all parts
 	std::vector<Vertex*> points;
 	glPushMatrix();
-
-
-
 	glTranslatef(posX, posY, posZ);
 	glRotatef(angle, angleX, angleY, angleZ);
-
-
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
 	glEnable(GL_COLOR_MATERIAL);
@@ -51,12 +49,8 @@ void TowerObject::Display() {
 		glVertex3f(points[1]->x * 4, points[1]->y * 4, points[1]->z * 4);
 		if (bUV) glTexCoord2f(uvs[i + 2]->x, uvs[i + 2]->y);
 		glVertex3f(points[2]->x * 4, points[2]->y * 4, points[2]->z * 4);
-
-
 		points.clear();
-
 	}
-
 	glEnd();
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glDisable(GL_TEXTURE_2D);
@@ -73,8 +67,9 @@ void TowerObject::Display() {
 
 void TowerObject::Fire() {
 	
+	// make it fire alternating from one side of the turret to the other
 	bSide = bSide * -1;
-	ProjectileObject* proj = new ProjectileObject(new Vertex(2 * bSide, 2,0), new Vertex(1, 1, 1), FindTarget(),this);
+	ProjectileObject* proj = new ProjectileObject(new Vertex(sin(angle*PI/180)*2 * bSide, 2,0+cos(angle*PI/180)*2*bSide), new Vertex(1, 1, 1), FindTarget(),this);
 	projs.push_back(proj);
 	
 }
@@ -85,6 +80,7 @@ void TowerObject::Update(const double& deltaTime) {
 		fireTime = 0;
 		Fire();
 	}
+	// update projectiles, delete if they're finished
 	for (int i = 0; i < projs.size(); i++) {
 		projs[i]->Update(deltaTime);
 		if (projs[i]->isFinished()) {
@@ -95,14 +91,11 @@ void TowerObject::Update(const double& deltaTime) {
 	}
 	if (target != nullptr) {
 		
+		//if we have a target, work out the angle to point at it
 		double diffx =target->posX - posX;
 		double diffz = target->posZ- posZ;
 		double totaldiff = sqrt(pow(diffx, 2) + pow(diffz, 2));
-		//double arcsin = asin(-diffz / totaldiff) * 180 / PI;
 		double arctan = atan2(diffz, diffx) * 180 / PI;
-		//double inversesin = (arcsin >= 0 ? 180-arcsin : 0-arcsin);
-		
-
 		angle = 180 - arctan;
 	}
 }

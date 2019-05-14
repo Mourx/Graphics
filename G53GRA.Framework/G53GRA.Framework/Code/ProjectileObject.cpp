@@ -29,18 +29,12 @@ ProjectileObject::~ProjectileObject()
 void ProjectileObject::Display() {
 	
 	glPushMatrix();
-	double cosAngle = cos((angle* PI)/180);
-	double sinAngle = sin((angle* PI) / 180);
-	double xPartX = cosAngle * posX;
-	std::vector<Vertex*> points;
 
+	// un-rotate
 	glRotatef(-angle, 0, 1, 0);
-	//glTranslatef(-cosAngle*posX + -sinAngle * posZ, posY, -cosAngle * posZ + -sinAngle * posX);
-	//glTranslatef(posX, posY, posZ);
-	glColor3f(1, 0, 0);
-	glutSolidSphere(0.5, 10, 5);
+
+	// rotate missile with offset 
 	missile->setAngle(angle-90, 0, 1, 0);
-	
 	missile->setPosition(posX, posY, posZ);
 	missile->Display();
 	glPopMatrix();
@@ -49,7 +43,7 @@ void ProjectileObject::Display() {
 
 void ProjectileObject::Update(const double& deltaTime) {
 	
-	Object::Update(deltaTime);
+	// move toward target (robot)
 	ReTarget();
 	posX += speedX * deltaTime * dirX*25;
 	posY += speedY * deltaTime * dirY * 25;
@@ -70,6 +64,7 @@ bool ProjectileObject::isFinished() {
 
 void ProjectileObject::ReTarget() {
 
+	// get direction to move using vectors
 	Vertex* vert = new Vertex(posX + parent->posX, posY + parent->posY, posZ + parent->posZ);
 	Vertex* targetv = new Vertex(target->posX, target->posY-5, target->posZ);
 	vert->x = targetv->x - vert->x;

@@ -18,6 +18,7 @@ SkyBox::~SkyBox()
 
 
 void SkyBox::Display() {
+	// make sure the faces are inward facing
 	glFrontFace(GL_CW);
 	glScalef(100, 100, 100);
 	Object::Display();

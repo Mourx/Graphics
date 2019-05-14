@@ -33,25 +33,13 @@
     <ClCompile Include="Code\MyScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Triangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Vertex.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\FloorSegment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\FloorTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Soldier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Node.cpp">
@@ -119,25 +107,13 @@
     <ClInclude Include="Code\MyScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Triangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Vertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\FloorSegment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\FloorTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Soldier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Node.h">

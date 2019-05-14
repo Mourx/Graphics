@@ -27,5 +27,6 @@ private:
 	std::string fileName;
 	Vertex* colour;
 	double size = 0;
+	int texID;
 };
 

@@ -21,20 +21,22 @@ Object::~Object()
 }
 
 void Object::Display() {
+
+	//vector for vertices
 	std::vector<Vertex*> points;
 	glPushMatrix();
-
-	
-
+	//translate to location, rotate, scale
 	glTranslatef(posX, posY, posZ);
 	glRotatef(angle, angleX, angleY, angleZ);
+	glScalef(scaleX, scaleY, scaleZ);
 
-
+	//gl stuff
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texID);
 	glEnable(GL_COLOR_MATERIAL);
-	glScalef(scaleX, scaleY, scaleZ);
 	glBegin(GL_TRIANGLES);
+
+	// use the obj loader values for each model to get vertices, normals and textures co-ords
 	for (int i = 0; i < vertices.size(); i+=3) {
 		glColor3f(red,green,blue);
 		glNormal3f(normals[i]->x,normals[i]->y,normals[i]->z);
