@@ -12,6 +12,7 @@ public:
 	void AddObj(DisplayableObject* obj);
 	std::vector<EnemyObject*> getEnemies();
 	void Update(const double& deltaTime);
+	void HandleKey(unsigned char key, int state, int x, int y);
 	void Draw();
 	void Clean();
 	Camera* GetCam();

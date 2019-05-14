@@ -126,7 +126,7 @@ void Scene::HandleKey(unsigned char key, int state, int x, int y)
 		if (input_obj != NULL)
 			input_obj->HandleKey(key, state, x, y);
 	}
-}
+} 
 
 void Scene::HandleSpecialKey(int key, int state, int x, int y)
 {

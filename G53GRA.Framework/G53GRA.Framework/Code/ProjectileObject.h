@@ -19,5 +19,6 @@ private:
 	Object* target;
 	Object* parent;
 	bool bFinished = false;
+	Object* missile;
 };
 

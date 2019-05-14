@@ -94,27 +94,14 @@ void TowerObject::Update(const double& deltaTime) {
 		}
 	}
 	if (target != nullptr) {
-		/*
-		Vertex* vert = new Vertex(posX, posY, posZ);
-		Vertex* targetv = new Vertex(target->posX, target->posY, target->posZ);
-		vert->x = targetv->x - vert->x;
-		vert->y = targetv->y - vert->y;
-		vert->z = targetv->z - vert->z;
-		double vertLength = sqrt(pow(vert->x, 2) + pow(vert->y, 2) + pow(vert->z, 2));
-		vert->x = vert->x / vertLength;
-		vert->y = vert->y / vertLength;
-		vert->z = vert->z / vertLength;
-		double targetvLength = sqrt(pow(targetv->x, 2) + pow(targetv->y, 2) + pow(targetv->z, 2));
-		double dotprod = vert->x * targetv->x + vert->y * targetv->y + vert->z * targetv->z;
-		double cosTheta = dotprod / (vertLength * targetvLength);
-		*/
+		
 		double diffx =target->posX - posX;
 		double diffz = target->posZ- posZ;
 		double totaldiff = sqrt(pow(diffx, 2) + pow(diffz, 2));
-		double arcsin = asin(-diffz / totaldiff) * 180 / PI;
+		//double arcsin = asin(-diffz / totaldiff) * 180 / PI;
 		double arctan = atan2(diffz, diffx) * 180 / PI;
-		double inversesin = (arcsin >= 0 ? 180-arcsin : 0-arcsin);
-		//double inversecos = acos(cosTheta) * 180 / PI;
+		//double inversesin = (arcsin >= 0 ? 180-arcsin : 0-arcsin);
+		
 
 		angle = 180 - arctan;
 	}

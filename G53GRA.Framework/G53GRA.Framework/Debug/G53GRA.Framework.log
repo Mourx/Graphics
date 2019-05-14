@@ -1,8 +1,11 @@
 ﻿  ProjectileObject.cpp
 c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\framework\utility\texture.h(4): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
   c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\framework\utility\texture.h(4): note: command-line arguments:  see previous definition of '_CRT_SECURE_NO_WARNINGS'
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(31): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(33): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(20): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(73): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\joel\documents\graphics\graphics\g53gra.framework\g53gra.framework\code\projectileobject.cpp(74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   G53GRA.Framework.vcxproj -> C:\Users\Joel\Documents\Graphics\Graphics\G53GRA.Framework\Debug\G53GRA.Framework.exe

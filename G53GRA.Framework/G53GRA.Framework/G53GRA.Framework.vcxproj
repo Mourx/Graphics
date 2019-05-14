@@ -17,6 +17,7 @@
     <ClCompile Include="Code\FloorSegment.cpp" />
     <ClCompile Include="Code\Object.cpp" />
     <ClCompile Include="Code\Path.cpp" />
+    <ClCompile Include="Code\PumpkinObject.cpp" />
     <ClCompile Include="Code\SkyBox.cpp" />
     <ClCompile Include="Code\Soldier.cpp" />
     <ClCompile Include="Code\TowerObject.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="Code\SkyBox.h" />
     <ClInclude Include="Code\ArmObject.h" />
     <ClInclude Include="Code\LegObject.h" />
+    <ClInclude Include="Code\PumpkinObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Barn.bmp" />

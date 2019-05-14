@@ -1,5 +1,5 @@
 #include "ProjectileObject.h"
-
+#include "ObjLoader.h"
 #define PI 3.14159265
 
 ProjectileObject::ProjectileObject(Vertex* position,Vertex* speed,Object* tg,Object* p)
@@ -13,6 +13,11 @@ ProjectileObject::ProjectileObject(Vertex* position,Vertex* speed,Object* tg,Obj
 	target = tg;
 	parent = p;
 	ReTarget();
+	ObjLoader* ldr = new ObjLoader();
+	ldr->LoadObj("Models/Missile.obj", true);
+	missile = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), ldr->getMat());
+	missile->texID = Scene::GetTexture("Textures/Steel.bmp");
+	missile->setScale(0.2, 0.2, 0.2);
 }
 
 
@@ -27,12 +32,17 @@ void ProjectileObject::Display() {
 	double cosAngle = cos((angle* PI)/180);
 	double sinAngle = sin((angle* PI) / 180);
 	double xPartX = cosAngle * posX;
+	std::vector<Vertex*> points;
 
 	glRotatef(-angle, 0, 1, 0);
 	//glTranslatef(-cosAngle*posX + -sinAngle * posZ, posY, -cosAngle * posZ + -sinAngle * posX);
-	glTranslatef(posX, posY, posZ);
+	//glTranslatef(posX, posY, posZ);
 	glColor3f(1, 0, 0);
 	glutSolidSphere(0.5, 10, 5);
+	missile->setAngle(angle-90, 0, 1, 0);
+	
+	missile->setPosition(posX, posY, posZ);
+	missile->Display();
 	glPopMatrix();
 
 }
@@ -41,9 +51,9 @@ void ProjectileObject::Update(const double& deltaTime) {
 	
 	Object::Update(deltaTime);
 	ReTarget();
-	posX += speedX * deltaTime * dirX*15;
-	posY += speedY * deltaTime * dirY * 15;
-	posZ += speedZ * deltaTime * dirZ*15;
+	posX += speedX * deltaTime * dirX*25;
+	posY += speedY * deltaTime * dirY * 25;
+	posZ += speedZ * deltaTime * dirZ*25;
 	if (std::abs(target->posX - (posX + parent->posX)) < 5 &&
 		std::abs(target->posY-5 - (posY + parent->posY)) < 5 &&
 		std::abs(target->posZ - (posZ + parent->posZ)) < 5) {
@@ -51,6 +61,7 @@ void ProjectileObject::Update(const double& deltaTime) {
 		enemy->Flash(deltaTime);
 		bFinished = true;
 	}
+	missile->setScale(missile->scaleX + 0.01, missile->scaleY + 0.01, missile->scaleZ + 0.01);
 }
 
 bool ProjectileObject::isFinished() {

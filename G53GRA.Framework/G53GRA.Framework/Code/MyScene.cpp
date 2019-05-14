@@ -10,6 +10,7 @@
 #include "CampfireObject.h"
 #include "TowerObject.h"
 #include "SkyBox.h"
+#include "PumpkinObject.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -36,6 +37,18 @@ void MyScene::Update(const double& deltaTime)
 	}
 	Clean();
 	
+}
+
+void MyScene::HandleKey(unsigned char key, int state, int x, int y)
+{
+	Input* input_obj;
+	Scene::HandleKey(key, state, x, y);
+	for (DisplayableObject* obj : objects)
+	{
+		input_obj = dynamic_cast<Input*>(obj);
+		if (input_obj != NULL)
+			input_obj->HandleKey(key, state, x, y);
+	}
 }
 
 Camera* MyScene::GetCam() {
@@ -236,7 +249,7 @@ void MyScene::Initialise()
 
 	ldr = new ObjLoader();
 	ldr->LoadObj("Models/Pumpkin.obj", true);
-	Object* pumpkin = new Object(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
+	PumpkinObject* pumpkin = new PumpkinObject(ldr->getVerts(), ldr->getNorms(), ldr->getUVs(), "Textures/Log.bmp");
 	pumpkin->texID = GetTexture("Textures/pumpkin.bmp");
 	pumpkin->setPosition(75, 0, -20);
 	pumpkin->setScale(0.6, 0.6, 0.6);

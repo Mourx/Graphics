@@ -144,8 +144,6 @@ void Camera::HandleKey(unsigned char key, int state, int x, int y)
 		case 's':
 			sKey = state;
 			break;
-		case ' ':
-			Reset();
 		default:
 			break;
 	}
